@@ -10,6 +10,8 @@ import Carousel from '../../components/carousel';
 import logoImg from '../../assets/logo.svg';
 import ImgAlt from '../../assets/01.jpg';
 import Biografia from '../biografia';
+import Contato from '../contato';
+
 
 import './styles.css'
 
@@ -17,6 +19,8 @@ export default function Home() {
     const [biografiaView, setBiografiaView] = useState(false);
     const [homeView, setHomeView] = useState(true);
     const [noticias, setNoticias] = useState([]);
+    const [contatoView, setContatoView] = useState(false);
+
 
     useEffect(() =>{
         api.get('noticias').then(response => {
@@ -31,9 +35,9 @@ export default function Home() {
                 <img className='logo' src={logoImg} alt={'Vereador Cyborg'} />
                 <div className='menu-tarja'>
                     <div className='itens-container'>
-                        <Link className='menu-item' to='/' onClick={() => {setHomeView(true); setBiografiaView(false)}}>Home</Link>
-                        <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(true)}} >Biografia</Link>
-                        <Link className='menu-item' to='/contato'>Contato</Link>
+                        <Link className='menu-item' to='/' onClick={() => {setHomeView(true); setBiografiaView(false); setContatoView(false)}}>Home</Link>
+                        <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(true); setContatoView(false)}} >Biografia</Link>
+                        <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(false); setContatoView(true)}} >Contato</Link>
                     </div>
                     <div className='icons-container'>
                         <a href='https://www.facebook.com/vereadorcyborg/'><FaFacebook size={20} color="#fff" /></a> 
@@ -60,7 +64,8 @@ export default function Home() {
                     ))}
                 </ul>
             </div>}
-            {biografiaView && <Biografia/>}     
+            {biografiaView && <Biografia/>} 
+            {contatoView && <Contato/>}     
         </div>
     );
 }
