@@ -9,13 +9,13 @@ import api from '../../services/api'
 import Carousel from '../../components/carousel';
 import logoImg from '../../assets/logo.svg';
 import ImgAlt from '../../assets/01.jpg';
-// import DetailNoticia from '../detailNoticia';
+import Biografia from '../biografia';
 
 import './styles.css'
 
 export default function Home() {
-    // const [detailView, setDetailView] = useState(false);
-    // const [homeView, setHomeView] = useState(true);
+    const [biografiaView, setBiografiaView] = useState(false);
+    const [homeView, setHomeView] = useState(true);
     const [noticias, setNoticias] = useState([]);
 
     useEffect(() =>{
@@ -24,15 +24,15 @@ export default function Home() {
         })
     })
 
+
     return(
         <div className='home-container'>
             <header className='header'>
                 <img className='logo' src={logoImg} alt={'Vereador Cyborg'} />
                 <div className='menu-tarja'>
                     <div className='itens-container'>
-                        <Link className='menu-item' to='/'>Home</Link>
-                        <Link className='menu-item' to='/biografia'>Biografia</Link>
-                        <Link className='menu-item' to='/noticias'>Notícias</Link>
+                        <Link className='menu-item' to='/' onClick={() => {setHomeView(true); setBiografiaView(false)}}>Home</Link>
+                        <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(true)}} >Biografia</Link>
                         <Link className='menu-item' to='/contato'>Contato</Link>
                     </div>
                     <div className='icons-container'>
@@ -45,7 +45,7 @@ export default function Home() {
                
             </header>
             <Carousel/>
-            {true && <div className='cards-container'>
+            {homeView && <div className='cards-container'>
                 <ul>
                     {noticias.map(noticia => (
                         <li key={noticia.url}>
@@ -60,9 +60,7 @@ export default function Home() {
                     ))}
                 </ul>
             </div>}
-            {/* {detailView && <div className='cards-container'>
-
-            </div>}      */}
+            {biografiaView && <Biografia/>}     
         </div>
     );
 }

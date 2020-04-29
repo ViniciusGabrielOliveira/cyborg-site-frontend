@@ -4,7 +4,6 @@ import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 
 import './styles.css'
-import logoImg from '../../assets/logo.svg'
 
 
 export default function NewIncident(){
@@ -16,7 +15,6 @@ export default function NewIncident(){
     const [classification, setClassification] = useState('');
     
 
-    const ongId = localStorage.getItem('ongId');
     const history = useHistory();
 
     async function handleNewIncident(e){
