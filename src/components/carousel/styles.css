@@ -2,7 +2,6 @@
     width: 100%;
     max-width: 1120px;
     height:320px;
-    margin: 0 auto;
 
     display: flex;
     align-items: center;
@@ -13,3 +12,10 @@
 .carousel-img {
     width: 100%;
 }
+
+
+@media screen and (max-width: 500px) {
+    .carousel-container {
+        height:150px;
+    }
+};

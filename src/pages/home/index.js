@@ -31,20 +31,20 @@ export default function Home() {
     })
 
     function StyleCyborg(text) {
-    const textArray = text.split("CYBORG");
-    
-    return (
-            <span>
-                {textArray.map((item, index) => (
-                    <>
-                        {item}
-                        {index !== textArray.length - 1 && (
-                            <b className="textCyborg">CYBORG</b>
-                        )}
-                    </>
-                ))}
-            </span>
-        );
+        const textArray = text.split("CYBORG");
+        
+        return (
+                <span>
+                    {textArray.map((item, index) => (
+                        <>
+                            {item}
+                            {index !== textArray.length - 1 && (
+                                <b className="textCyborg">CYBORG</b>
+                            )}
+                        </>
+                    ))}
+                </span>
+            );
     }
 
 
@@ -54,9 +54,6 @@ export default function Home() {
                 <img className='logo' src={logoImg} alt={'Vereador Cyborg'} />
                 <div className='menu-tarja'>
                     <div className='itens-container'>
-                        <Link className='menu-item' to='/' onClick={() => {setHomeView(true); setBiografiaView(false)}}>Home</Link>
-                        <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(true)}} >Biografia</Link>
-                        <Link className='menu-item' to='/contato'>Contato</Link>
                         <Link className='menu-item' to='/' onClick={() => {setHomeView(true); setBiografiaView(false); setContatoView(false)}}>Home</Link>
                         <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(true); setContatoView(false)}} >Biografia</Link>
                         <Link className='menu-item' to='/' onClick={() => {setHomeView(false); setBiografiaView(false); setContatoView(true)}} >Contato</Link>
@@ -90,7 +87,7 @@ export default function Home() {
                                     </div>
                                     <h1>{noticia.title}</h1>                            
                                     <p>{StyleCyborg(noticia.text.substr(0,200))}...
-                                        <Link className='leia-mais' to='/'>Leia mais</Link>
+                                        <Link className='leia-mais' to='/' onClick={localStorage.setItem('urlNoticia', noticia.url)}>Leia mais</Link>
                                     </p>
                                 </>
                             }    

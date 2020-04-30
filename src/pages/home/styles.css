@@ -18,7 +18,7 @@
 }
 
 .logo {
-    width: 15%;
+    width: 18%;
     padding: 5%;
 }
 
@@ -62,14 +62,10 @@
 .cards-container ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 24px;
+    grid-gap: 3%;
     list-style: none;  
-    padding: 20px;
-    width: 100%;
-
-    @media screen and (max-width: 500px) {
-        display: block;
-    };
+    padding: 5%;
+    width: 93%;
 }
 
 .cards-container ul li {
@@ -133,3 +129,30 @@
     font: 900 italic 15px Roboto, sans-serif;
     color: red;
 }
+
+
+@media screen and (max-width: 600px) {
+    .cards-container ul {
+        display: block;
+    }
+
+    .cards-container ul li {
+        margin-bottom: 15px;
+    }
+
+    .img-card {
+        height: 50vh;
+    }
+
+    .logo {
+        width: 30%;
+    }
+
+    .cards-container ul li p {
+        font: 200 18px Roboto, sans-serif;
+        padding: 10px 0 10px 0;
+        color: #545464;
+        text-align: justify;
+    }
+};
+

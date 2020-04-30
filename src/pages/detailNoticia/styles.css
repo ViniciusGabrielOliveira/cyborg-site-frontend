@@ -1,0 +1,12 @@
+.cards-container ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+    list-style: none;  
+    padding: 20px;
+    width: 100%;
+
+    @media screen and (max-width: 500px) {
+        display: block;
+    };
+}
