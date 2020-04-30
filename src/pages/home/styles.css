@@ -1,3 +1,4 @@
+
 .home-container {
     width: 100%;
     max-width: 1120px;
@@ -63,7 +64,12 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 24px;
     list-style: none;  
-    padding: 20px; 
+    padding: 20px;
+    width: 100%;
+
+    @media screen and (max-width: 500px) {
+        display: block;
+    };
 }
 
 .cards-container ul li {
@@ -114,17 +120,16 @@
 
 .leia-mais {
     padding: 4px 7px;
-    background: #545464;
-    border: 0px;
-    border-radius: 7px;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
+    color: rgb(7, 4, 182);
     font-size: 15px;
     transition: filter 0.2s;
-    margin-left: 37%;
 }
 
 .leia-mais:hover {
     filter: brightness(50%);
+}
+
+.textCyborg {
+    font: 900 italic 15px Roboto, sans-serif;
+    color: red;
 }
