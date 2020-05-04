@@ -183,6 +183,12 @@
         margin-right: 4%;
     }
 
+    .icons-container {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5%;
+    }
+
     .menu-mb {
         display: flex;
         flex-flow: column nowrap;
