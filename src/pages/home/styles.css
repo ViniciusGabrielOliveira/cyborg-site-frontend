@@ -12,14 +12,20 @@
 
 .header {
     display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
+.header-container {
+    display: flex;
+    margin-top: 3%;
     align-items: center;
     justify-content: space-between;
-    height: 130px;
 }
 
 .logo {
     width: 18%;
-    padding: 5%;
+    padding: 0% 5%;
 }
 
 .menu-tarja {
@@ -53,10 +59,12 @@
 
 .icons-container {
     display: flex;
-    width: 150px;
-    display: flex;
     justify-content: space-between;
-    margin: 20px;
+    padding-left: 5%;
+}
+
+.icons-container a {
+    padding: 0% 5%;
 }
 
 .cards-container ul {
@@ -66,6 +74,7 @@
     list-style: none;  
     padding: 5%;
     width: 93%;
+
 }
 
 .cards-container ul li {
@@ -80,7 +89,7 @@
     position: absolute;
     right: 24px;
     top: 24px;
-    border: 0;    
+    border: 0; 
 }
 
 .cards-container ul li button:hover{
@@ -130,6 +139,14 @@
     color: red;
 }
 
+.iconMenu {
+    display: none;
+}
+
+.menu-mb {
+    display: none;
+}
+
 
 @media screen and (max-width: 600px) {
     .cards-container ul {
@@ -145,14 +162,42 @@
     }
 
     .logo {
-        width: 30%;
+        width: 130px;
+        padding: 0% 3%;
     }
 
     .cards-container ul li p {
         font: 200 18px Roboto, sans-serif;
-        padding: 10px 0 10px 0;
-        color: #545464;
-        text-align: justify;
+        color: #151518;
+    }
+    
+    .itens-container {
+        display: none;
+    }
+
+    .iconMenu {
+        display: flex;
+        color: #fff;
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 4%;
+    }
+
+    .menu-mb {
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: #22384F;
+        width: 120px;
+        align-self: flex-end;
+    }
+
+    .menu-mb-item {
+        display: flex;
+        text-align: right;
+        color: white;
+        font: 400 14px Roboto, sans-serif;
+        text-transform: uppercase;
+        text-decoration-line: none;
+        padding: 10px;
     }
 };
-
