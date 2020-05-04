@@ -63,7 +63,7 @@ export default function Home() {
                             <a href='https://www.facebook.com/vereadorcyborg/'><FaFacebook size={20} color="#fff" /></a> 
                             <a href='https://www.instagram.com/rogeriocyborg/'><FaInstagram size={20} color="fff"/></a>
                             <a href="https://www.youtube.com/channel/UCkjSv03cwwdk-PgR6S1yyzA"><FaYoutube size={20} color="#fff"/></a>
-                            <a href="whatsapp://send?text=hello&phone=xxxxxxxxxxxxx"><FaWhatsapp size={20} color="#fff"/></a>
+                            <a href="whatsapp://send?text=hello&phone=+5512996843123"><FaWhatsapp size={20} color="#fff"/></a>
 
                         </div>
                         <FaBars className='iconMenu' onClick={() => {menuMobile ? setMenuMobile(false) : setMenuMobile(true)}}/>
