@@ -2,21 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles.css'
-import noticiasAlter from '../../assets/noticiasAlter.json'
 import api from '../../services/api'
 import ImgAlt from '../../assets/01.jpg';
 
 
 export default function Noticias(){
     
-    const [noticias, setNoticias] = useState(noticiasAlter);
+    const [noticias, setNoticias] = useState([]);
 
     useEffect(() =>{
-
         api.get('noticias').then(response => {
             setNoticias(response.data);
         })
-        
     })
 
     function StyleCyborg(text) {

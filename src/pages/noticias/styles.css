@@ -2,9 +2,9 @@
 .cards-container ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3%;
+    grid-gap: 20px;
     list-style: none;  
-    padding: 5%;
+    padding: 5% 0;
     width: 93%;
 }
 
