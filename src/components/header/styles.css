@@ -1,0 +1,93 @@
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
+.header-container {
+    display: flex;
+    margin-top: 3%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 18%;
+    padding: 0% 5%;
+}
+
+.menu-tarja {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 70%;
+    height: 60px;
+    background: #22384F;
+    border-radius: 100px 0px 0px 100px;
+}
+
+.itens-container {
+    display: flex;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10%;
+}
+
+.menu-item {
+    color: white;
+    font: 400 14px Roboto, sans-serif;
+    text-transform: uppercase;
+    text-decoration-line: none;
+    display: flex;
+    align-content: center;
+}
+
+.icons-container {
+    display: flex;
+    padding-left: 7px;
+    margin-right: 2%;
+}
+
+.icons-container a {
+    padding: 0% 8px
+}
+
+.iconMenu {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .menu-mb {
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: #22384F;
+        width: 120px;
+        align-self: flex-end;
+    }
+
+    .logo {
+        width: 130px;
+        padding: 0% 3%;
+    }
+    
+    .iconMenu {
+        display: flex;
+        color: #fff;
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 4%;
+    }
+
+    .menu-mb-item {
+        display: flex;
+        text-align: right;
+        color: white;
+        font: 400 14px Roboto, sans-serif;
+        text-transform: uppercase;
+        text-decoration-line: none;
+        padding: 10px;
+    }
+};
