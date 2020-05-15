@@ -9,11 +9,25 @@ import ImgAlt from '../../assets/01.jpg';
 export default function Noticias(){
     
     const [noticias, setNoticias] = useState([]);
-
+    const auth = {
+        'username': 'cyborg',
+        'password': 'cyborg2014'
+    }
+    
     useEffect(() =>{
-        api.get('noticias').then(response => {
+        api.post('token-auth/', auth).then(response => {
+              localStorage.setItem('token', response.data.token);
+              
+            })
+
+
+        api.get('noticias/', {
+            headers: {
+              Authorization: `JWT ${localStorage.getItem('token')}`
+            }}).then(response => {
             setNoticias(response.data);
         })
+
     })
 
     function StyleCyborg(text) {

@@ -1,0 +1,3 @@
+alterar valor da variavel enquanto digita
+onChange={(e) => changeUsername(e.target.value)}
+

@@ -29,13 +29,23 @@ export default function NewIncident(){
             classification
         };
 
-        try {
-            await api.post('noticias', data)
-        history.push('/');
-        } catch (err) {
-            console.log(err);
-            alert('Erro ao cadastrar noticia, tente novamente.')
+        const auth = {
+            'username': 'cyborg',
+            'password': 'cyborg2014'
         }
+
+        try {
+            await api.post('token-auth/', auth).then(response => {
+                localStorage.setItem('token', response.data.token);
+            }).then(api.post('noticias/', data, {
+                headers: {
+                  Authorization: `JWT ${localStorage.getItem('token')}`
+                }
+            }));
+        }catch(err){
+            console.log(err)
+        }
+
     }
 
     return(
