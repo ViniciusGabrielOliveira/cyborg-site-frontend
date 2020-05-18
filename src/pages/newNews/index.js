@@ -37,13 +37,16 @@ export default function NewIncident(){
         try {
             await api.post('token-auth/', auth).then(response => {
                 localStorage.setItem('token', response.data.token);
-            }).then(api.post('noticias', data, {
+            }).then(api.post('noticias/', data, {
                 headers: {
-                  'Authorization': `JWT ${localStorage.getItem('token')}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${localStorage.getItem('token')}`
                 }
             }));
+            
         }catch(err){
             console.log(err)
+            alert("ERRO ao cadastrar, verifique os dados")
         }
 
     }
