@@ -16,17 +16,14 @@ export default function Noticias(){
     
     useEffect(() =>{
         api.post('token-auth/', auth).then(response => {
-              localStorage.setItem('token', response.data.token);
-              
-            })
-
-
-        api.get('noticias/', {
+            localStorage.setItem('token', response.data.token);
+        }).then(api.get('noticias', {
             headers: {
-              Authorization: `JWT ${localStorage.getItem('token')}`
+                'Authorization': `JWT ${localStorage.getItem('token')}`
             }}).then(response => {
-            setNoticias(response.data);
-        })
+                setNoticias(response.data);
+        }))
+
 
     })
 

@@ -37,9 +37,9 @@ export default function NewIncident(){
         try {
             await api.post('token-auth/', auth).then(response => {
                 localStorage.setItem('token', response.data.token);
-            }).then(api.post('noticias/', data, {
+            }).then(api.post('noticias', data, {
                 headers: {
-                  Authorization: `JWT ${localStorage.getItem('token')}`
+                  'Authorization': `JWT ${localStorage.getItem('token')}`
                 }
             }));
         }catch(err){
