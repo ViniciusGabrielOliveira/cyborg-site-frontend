@@ -19,6 +19,7 @@ export default function Noticias(){
             localStorage.setItem('token', response.data.token);
         }).then(api.get('noticias', {
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }}).then(response => {
                 setNoticias(response.data);

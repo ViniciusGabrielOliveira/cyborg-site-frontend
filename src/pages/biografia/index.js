@@ -16,7 +16,7 @@ export default function Biografia(){
             <Carousel/>
             <div className="biografia-container">
                 <h1>Biografia</h1>
-                <h3>Escrever Biografia</h3>
+                <h3>Escrever Biografia,</h3>
             </div>
             
         </div>
