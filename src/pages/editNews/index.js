@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
@@ -6,16 +6,54 @@ import api from '../../services/api';
 import './styles.css'
 
 
-export default function NewNews(){
+export default function EditNews(){
+      
+    const [noticia, setNoticia] = useState([]);
+    const auth = {
+        'username': 'cyborg',
+        'password': 'cyborg2014'
+    }
     const [title, setTitle] = useState('');
     const [reference_date, setReference_date] = useState('');
     const [text, setText] = useState('');
     const [tags, setTags] = useState('');
     const [image, setImage] = useState('');
     const [classification, setClassification] = useState('');
-    
 
     const history = useHistory();
+
+    useEffect(() =>{
+        api.post('token-auth/', auth).then(response => {
+            localStorage.setItem('token', response.data.token);
+        }).then(api.get(localStorage.getItem('url'), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }}).then(response => {
+                setNoticia(response.data);
+                if (title==''){            
+                    setTitle(noticia.title)
+                    setReference_date(noticia.reference_date)
+                    setText(noticia.text)
+                    setTags(noticia.tags)
+                    setImage(noticia.image)
+                    setClassification(noticia.classification)
+                }
+        }))
+        
+
+
+    })
+
+    function montNews(){
+        setTitle(noticia.title)
+        setReference_date(noticia.reference_date)
+        setText(noticia.text)
+        setTags(noticia.tags)
+        setImage(noticia.image)
+        setClassification(noticia.classification)
+    }
+    
 
     async function handleNewIncident(e){
         e.preventDefault();
@@ -29,15 +67,10 @@ export default function NewNews(){
             classification
         };
 
-        const auth = {
-            'username': 'cyborg',
-            'password': 'cyborg2014'
-        }
-
         try {
             await api.post('token-auth/', auth).then(response => {
                 localStorage.setItem('token', response.data.token);
-            }).then(api.post('noticias/', data, {
+            }).then(api.patch(localStorage.getItem('url'), data, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${localStorage.getItem('token')}`
@@ -52,19 +85,20 @@ export default function NewNews(){
     }
 
     return(
+        
         <div className="new-incident-container">
             <div className="content">
                 <section>
-                    <h1>Cadastrar Notícia</h1>
-                    <Link className="back-link" to="/">
+                    <h1>Editar Notícia</h1>
+                    <Link className="back-link" to="/admNews">
                         <FiArrowLeft size={16} color="#E02041" />
-                        Voltar para Home
+                        Voltar para Adm
                     </Link>
                 </section>
 
-                <form onSubmit={handleNewIncident}
+                <form  onSubmit={handleNewIncident}
                 >
-                    <input 
+                    <input
                         placeholder="Título da Notícia"
                         value={title}
                         onChange={e=> setTitle(e.target.value)} 
@@ -97,7 +131,7 @@ export default function NewNews(){
                         onChange={e=> setClassification(e.target.value)}
                     />
 
-                    <button className="button" type='submit'>Cadastrar</button>
+                    <button className="button" type='submit'>Salvar</button>
                 </form>
             </div>
         </div>

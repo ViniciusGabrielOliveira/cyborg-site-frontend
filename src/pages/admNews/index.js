@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './styles.css'
 import api from '../../services/api'
+import { FaEdit } from "react-icons/fa";
+
 import ImgAlt from '../../assets/01.jpg';
 
 
-export default function Noticias(){
+export default function AdmNews(){
     
     const [noticias, setNoticias] = useState([]);
     const auth = {
@@ -52,29 +54,13 @@ export default function Noticias(){
     }
 
     return(
-        <div className='cards-container'>
+        <div className='cards-container-adm'>
             <ul>
                 {noticias.map(noticia => (
                     <li key={noticia.url}>
-                        {noticia.text.length<300 ?
-                            <Link className='link-noticia' to={`/noticias/${TreatTitle(noticia.title)}`}>
-                                <div>  
-                                    {noticia.image.length > 5 ? <img className='img-card' src={noticia.image} alt="...carregando imagem..." /> : <img className='img-card' src={ImgAlt} alt="...carregando imagem..." />}
-                                </div>
-                                <h1>{noticia.title}</h1>
-                                <p>{StyleCyborg(noticia.text)}</p>
-                            </Link>
-                        :
-                            <Link className='link-noticia' to={`/noticias/${TreatTitle(noticia.title)}`}>
-                                <div>  
-                                    {noticia.image.length > 5 ? <img className='img-card' src={noticia.image} alt="...carregando imagem..." /> : <img className='img-card' src={ImgAlt} alt="...carregando imagem..." />}
-                                </div>
-                                <h1>{noticia.title}</h1>                            
-                                <p>{StyleCyborg(noticia.text.substr(0,250))}...
-                                    <a className='leia-mais'>Leia mais</a>
-                                </p>
-                            </Link>
-                        }    
+                        <Link to='/noticia/edit'><FaEdit size={20} color="#D3D3D3" onClick={() => localStorage.setItem('url', noticia.url)} /></Link>
+                        <h1>{noticia.title}</h1>
+                        <p>{StyleCyborg(noticia.text)}</p>
                     </li>
                 ))}                    
             </ul>
