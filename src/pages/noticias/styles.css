@@ -52,6 +52,7 @@
     padding: 10px 0 10px 0;
     color: #545464;
     text-align: justify;
+    white-space: pre-wrap;
 }
 
 .leia-mais {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -14,9 +14,6 @@ export default function NewNews(){
     const [image, setImage] = useState('');
     const [classification, setClassification] = useState('');
     
-
-    const history = useHistory();
-
     async function handleNewIncident(e){
         e.preventDefault();
 

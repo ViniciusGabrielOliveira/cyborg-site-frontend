@@ -37,4 +37,5 @@
     padding: 10px 5px 10px 5px;
     color: #545464;
     text-align: justify;
+    white-space: pre-wrap;
 }

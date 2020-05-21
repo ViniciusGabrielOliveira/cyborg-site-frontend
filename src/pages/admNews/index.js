@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './styles.css'
 import api from '../../services/api'
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-import ImgAlt from '../../assets/01.jpg';
 
 
 export default function AdmNews(){
@@ -17,16 +16,27 @@ export default function AdmNews(){
     }
     
     useEffect(() =>{
-        api.post('token-auth/', auth).then(response => {
-            localStorage.setItem('token', response.data.token);
-        }).then(api.get('noticias', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('token')}`
-            }}).then(response => {
+        api.get('noticias').then(response => {
                 setNoticias(response.data);
-        }))
+        })
     })
+
+    async function DeleteNews(url) {
+        try {
+            await api.post('token-auth/', auth).then(response => {
+                localStorage.setItem('token', response.data.token);
+            }).then(api.delete(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${localStorage.getItem('token')}`
+                }
+            }));
+            
+        }catch(err){
+            console.log(err)
+            alert("ERRO ao cadastrar, verifique os dados")
+        }
+    }
 
     function StyleCyborg(text) {
         const textArray = text.split("CYBORG");
@@ -43,15 +53,6 @@ export default function AdmNews(){
         );
     }
 
-    function TreatTitle(title){
-        const a = 'àáäâãèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
-        const b = 'aaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
-        const p = new RegExp(a.split('').join('|'), 'g')
-        return title.toString().toLowerCase().trim()
-          .replace(p, c => b.charAt(a.indexOf(c))) 
-          .replace(/&/g, '-and-') 
-          .replace(/[\s\W-]+/g, '-') 
-    }
 
     return(
         <div className='cards-container-adm'>
@@ -59,6 +60,7 @@ export default function AdmNews(){
                 {noticias.map(noticia => (
                     <li key={noticia.url}>
                         <Link to='/noticia/edit'><FaEdit size={20} color="#D3D3D3" onClick={() => localStorage.setItem('url', noticia.url)} /></Link>
+                        <FaTrash size={20} color="#D3D3D3" onClick={() => (window.confirm('Delete the item?')) ? DeleteNews(noticia.url) : null} />
                         <h1>{noticia.title}</h1>
                         <p>{StyleCyborg(noticia.text)}</p>
                     </li>

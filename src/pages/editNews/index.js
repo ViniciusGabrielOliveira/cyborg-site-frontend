@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -20,7 +20,6 @@ export default function EditNews(){
     const [image, setImage] = useState('');
     const [classification, setClassification] = useState('');
 
-    const history = useHistory();
 
     useEffect(() =>{
         api.post('token-auth/', auth).then(response => {
@@ -31,7 +30,7 @@ export default function EditNews(){
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }}).then(response => {
                 setNoticia(response.data);
-                if (title==''){            
+                if (title===''){            
                     setTitle(noticia.title)
                     setReference_date(noticia.reference_date)
                     setText(noticia.text)
@@ -40,20 +39,8 @@ export default function EditNews(){
                     setClassification(noticia.classification)
                 }
         }))
-        
-
-
     })
 
-    function montNews(){
-        setTitle(noticia.title)
-        setReference_date(noticia.reference_date)
-        setText(noticia.text)
-        setTags(noticia.tags)
-        setImage(noticia.image)
-        setClassification(noticia.classification)
-    }
-    
 
     async function handleNewIncident(e){
         e.preventDefault();

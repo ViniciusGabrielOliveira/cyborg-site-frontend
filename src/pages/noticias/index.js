@@ -15,15 +15,9 @@ export default function Noticias(){
     }
     
     useEffect(() =>{
-        api.post('token-auth/', auth).then(response => {
-            localStorage.setItem('token', response.data.token);
-        }).then(api.get('noticias', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('token')}`
-            }}).then(response => {
+        api.get('noticias').then(response => {
                 setNoticias(response.data);
-        }))
+        })
     })
 
     function StyleCyborg(text) {
