@@ -3,9 +3,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+    justify-content: space-between;
+
     list-style: none;  
-    padding: 5% 0;
-    width: 93%;
+    padding: 20px 0;
+    width: 100%;
 }
 
 .cards-container ul li {
@@ -77,6 +79,23 @@
     color: red;
 }
 
+.search-container {
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.faSearch {
+    color: rgb(104, 101, 121);
+}
+
+.search-container input {
+    width: 95%;
+    border: #fff;
+    margin-left: 10px;
+    font: 200 20px Roboto, sans-serif;
+}
 
 @media screen and (max-width: 600px) {
     .cards-container ul {

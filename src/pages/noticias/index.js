@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaSearch } from "react-icons/fa";
+
 
 import './styles.css'
 import api from '../../services/api'
@@ -9,15 +11,13 @@ import ImgAlt from '../../assets/01.jpg';
 export default function Noticias(){
     
     const [noticias, setNoticias] = useState([]);
-    const auth = {
-        'username': 'cyborg',
-        'password': 'cyborg2014'
-    }
+    const [searchValue, setSearchValue] = useState('')
     
     useEffect(() =>{
-        api.get('noticias').then(response => {
-                setNoticias(response.data);
+        api.get('detalhes/?search='+TreatSearch(searchValue)).then(response => {  
+            setNoticias(response.data);
         })
+
     })
 
     function StyleCyborg(text) {
@@ -45,8 +45,28 @@ export default function Noticias(){
           .replace(/[\s\W-]+/g, '-') 
     }
 
+    function TreatSearch(search){
+        const a = '·/_,:;'
+        const b = '++++++'
+        const p = new RegExp(a.split('').join('|'), 'g')
+        return search.toString().toLowerCase().trim()
+          .replace(p, c => b.charAt(a.indexOf(c))) 
+          .replace(/&/g, '+') 
+          .replace(/[\s\W-]+/g, '+')
+    }
+
+
     return(
         <div className='cards-container'>
+            <div className='search-container'>
+                <FaSearch className='faSearch' />
+                <input type="text" 
+                    className="searchBar" 
+                    placeholder="Pesquise por tema ou palavra"
+                    value={searchValue}
+                    onChange={e=> setSearchValue(e.target.value)}
+                    />
+            </div>
             <ul>
                 {noticias.map(noticia => (
                     <li key={noticia.url}>
