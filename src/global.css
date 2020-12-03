@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
 
 * {
     margin: 0;
@@ -9,43 +9,76 @@
 
 body {
     font: 400 14px Roboto, sans-serif;
-    background: rgb(224, 228, 228);
+    background: #DADEE7;
     -webkit-font-swoothing: antialiased;
 }
 
-input, button, textarea {
+input, button, textarea, select {
     font: 400 18px Roboto, sans-serif;
+}
+
+p {
+    font: 200 13.5px Roboto, sans-serif;
+    margin-bottom: 6px;
+}
+
+h4 {
+    font: 400 14px Roboto, sans-serif;
 }
 
 button {
     cursor: pointer;
 }
 
-form input {
-    width: 89%;
-    height: 60px;
-    color: #333;
-    border: 1px solid #dcdce6;
-    border-radius: 8px;
-    padding: 0 24px;
+hr {
+    margin: 9px 0;
 }
 
-form textarea {
-    width: 89%;
-    resize: vertical;
-    min-height: 140px;
+input {
+    width: 98%;
     height: 60px;
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
-    padding: 16px 24px;
+    padding: 0 0 0 2%;
+    margin-bottom: 9px;
+}
+
+textarea {
+    width: 98%;
+    resize: vertical;
+    min-height: 140px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 0 0 2%;
     line-height: 24px;
+    margin-bottom: 7px;
+}
+
+select {
+    width: 100%;
+    height: 60px;
+    color: rgb(80, 79, 79);
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 0 0 2%;
+    margin-bottom: 9px;
+}
+
+option {
+    width: 98%;
+    height: 60px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 0 0 2%;
 }
 
 .button {
     width: 100%;
     height: 60px;
-    background: #e02041;
+    background: #425070;
     border: 0px;
     border-radius: 8px;
     color: #fff;
@@ -78,7 +111,7 @@ form textarea {
     margin-right: 8px;
 }
 
-
 .back-link:hover{
     opacity: 0.8;
 }
+
