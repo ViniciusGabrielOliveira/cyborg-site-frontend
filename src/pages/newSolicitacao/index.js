@@ -173,20 +173,23 @@ export default function NewSolicitacao(){
     function handleNewTarefa(e){
         e.preventDefault();
 
-        
+        if(Moment(trfPrazo_entrega).format() >= Moment()+1) {
 
-        if (trfPrazo_entrega) {tarefa['prazo_entrega']=Moment(trfPrazo_entrega).format()}
-        if (trfTipo) {tarefa['tipo']=trfTipo}
-        if (trfDescricao) {tarefa['descricao']=trfDescricao}
-        if (trfSecretaria) {tarefa['secretaria']=trfSecretaria}
-        if (trfObservacao) {tarefa['observacao']=trfObservacao}
-        if (trfPrioridade) {tarefa['prioridade']=trfPrioridade}
+            if (trfPrazo_entrega) {tarefa['prazo_entrega']=Moment(trfPrazo_entrega).format()}
+            if (trfTipo) {tarefa['tipo']=trfTipo}
+            if (trfDescricao) {tarefa['descricao']=trfDescricao}
+            if (trfSecretaria) {tarefa['secretaria']=trfSecretaria}
+            if (trfObservacao) {tarefa['observacao']=trfObservacao}
+            if (trfPrioridade) {tarefa['prioridade']=trfPrioridade}
 
-        setTarefas([...tarefas, tarefa])
+            setTarefas([...tarefas, tarefa])
 
-        
+            
 
-        setAddTarefaView(false)
+            setAddTarefaView(false)
+        }else {
+            alert("Prazo de entrega inválido!")
+        }
             
     }
 
@@ -239,7 +242,7 @@ export default function NewSolicitacao(){
             <section>
                 <h1>Nova Solicitação</h1>
 
-                <Link className="back-link" to={null}>
+                <Link className="back-link" to={()=> history.goBack()}>
                     <FiArrowLeft size={16} color="gray" />
                     Voltar
                 </Link>
