@@ -1,0 +1,11 @@
+
+.home-container {
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: block;
+    align-items: baseline;
+    justify-content: space-between;
+}

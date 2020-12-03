@@ -22,7 +22,11 @@
     "react-scripts": "3.4.1",
     "react-slick": "^0.25.2",
     "slate": "^0.57.1",
-    "slate-react": "^0.57.1"
+    "slate-react": "^0.57.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "styled-components": "^5.2.0",
+    "utf8": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

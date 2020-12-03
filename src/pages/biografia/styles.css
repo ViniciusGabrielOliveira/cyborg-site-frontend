@@ -7,4 +7,26 @@
     display: block;
     align-items: baseline;
     justify-content: space-between;
+    position: relative;
+}
+
+.biografia-container h1 {
+    font: 900 italic 30px Roboto, sans-serif;
+    color: red;
+    position: absolute;
+
+}
+
+.biografia-container img {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+.biografia-container p {
+    font: 400 20px Roboto, sans-serif;
+    color: rgb(68, 68, 68);
+    white-space: pre-wrap;
+    position: absolute;
+
 }

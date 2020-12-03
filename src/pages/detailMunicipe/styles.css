@@ -1,0 +1,324 @@
+.avatar-container {
+    display: inline-block;
+    text-align: center;
+}
+.avatar1 {
+    max-width: 350px;
+    width: 100%;
+}
+/* ...............................caixa nascimento/graduação */ 
+.birthdayGraduate{
+    display: flex;
+    width: 100%;
+    background-color: rgb(173, 173, 173);
+    margin-top: 15px;
+}
+.birthDate{
+    background-color: rgb(117, 117, 117);
+    padding: 3px 12px 3px 6px;
+    color: rgb(255, 255, 255)
+}
+.birthIcon {
+    background-color: rgb(117, 117, 117);
+    padding: 5px;
+    color: rgb(248, 140, 167);
+    height: 100%;
+}
+.graduateIcon {
+    background-color: rgb(173, 173, 173);
+    padding: 5px;
+    size: 20px;
+}
+.graduate{
+    padding: 3px 16px 3px 6px;
+    color: rgb(255, 255, 255);
+}
+
+/* ................................................caixa bairro e sexo */
+
+.bairroSexo{
+    display: flex;
+    width: 100%;
+    background-color: rgb(142, 146, 161);
+    margin-bottom: 15px;
+}
+
+.bairro{
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    font: 500 15px Roboto, sans-serif;
+    width: 85%;
+}
+.sexo{
+    color: white;
+    background-color: black;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    align-self: center;
+    margin-left: 5px;
+}
+
+/* ..................................caixa phone: */
+
+.phone-li {
+    display: flex;
+}
+.phoneIcon{
+    color: rgb(0, 110, 255);
+    margin-right: 5px;
+}
+
+/* ..................................caixa email: */
+
+.email-li{
+    display: flex;
+}
+.emailIcon{
+    color: rgb(153, 152, 116);
+    margin-right: 5px;
+}
+
+/* .....................................obs */
+.obs{
+    width: 100% - 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+/* ....................................caixa classificações */
+
+.class-add{
+    width: 100%;
+    background-color: rgb(203, 213, 223);
+    align-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 5px;
+    border-radius: 9px;
+}
+.class-add select{
+    background-color: rgba(199, 198, 233, 0);
+    border: none;
+    align-self: center;
+    font-size: 14px;
+    width: 90%;
+}
+.class-li{
+    padding: 1px 9px;
+    margin: 3px;
+    background-color: rgb(176, 209, 243);
+    border-radius: 8px;
+    align-content: center;
+    align-items: center;
+    display: flex;
+}
+.container-classificacoes ul{
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0px;
+}
+
+/* .............................solicitacoes */
+
+.solicitacoesContainer{
+    width: 100% - 6px;
+    border: 0.7px;
+    border-style: outset;
+    border-color: rgba(0, 0, 0, 0.411);
+    border-radius: 9px;
+    padding: 6px;
+}
+
+.solicitHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    align-content: space-between;
+    margin: auto;
+}
+.solicitHeader p{
+    align-items: center;
+    margin-right: auto;
+}
+
+.solicitHeader button{
+    align-items: center;
+    margin-bottom: 0;
+    height: auto;
+    padding: 0;
+    align-self: center;
+    border: none;
+    color: rgb(0, 102, 255);
+}
+
+.solicitacoesMunicipe{
+    display: block;
+}
+
+/* ................................Solicitações Titulo */
+
+.solicitaTitle{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(187, 184, 204);
+    min-height: 25px;
+    border-radius: 5px;
+}
+.solicitaDate{
+    width: 80px;
+    background-color: rgba(0, 0, 0, 0.384);
+    min-height: 25px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.solicitaDate p {
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font: 500 12px Roboto, sans-serif;
+}
+
+.solicitaTipo{
+    font: 200 13px Roboto, sans-serif;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-right: auto;
+}
+.solicitaTipo p {
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font: 500 13px Roboto, sans-serif;
+    margin: 0 4px;
+}
+.containerButtons {
+    font: 200 13px Roboto, sans-serif;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+.solicitaStatus{
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: green;
+}
+.solicitaView{
+    width: 21px;
+    height: 17px;
+    border-radius: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: rgb(187, 184, 204);
+    margin-left: 4px;
+
+}
+
+.solicitaAdd{
+    width: 20px;
+    height: 17px;
+    border-radius: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: rgb(187, 184, 204);
+    margin-left: 4px;
+    margin-right: auto;
+}
+
+/* ................................Ação da Solicitação */
+
+.acaoContainer{
+    display: flex;
+    width: 100%;
+    background-color: rgb(215, 211, 235);
+    min-height: 20px;
+    border-radius: 5px;
+    margin: 0;
+    margin-top: 6px;
+}
+.acaoDate{
+    width: 80px;
+    background-color: rgb(187, 184, 204);
+    min-height: 20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.acaoDate p {
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font: 200 11px Roboto, sans-serif;
+}
+
+.acaoTipo{
+    font: 200 13px Roboto, sans-serif;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-right: auto;
+}
+.acaoTipo p {
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font: 200 11px Roboto, sans-serif;
+    margin: 0 4px;
+}
+
+.acaoStatus{
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: green;
+}
+.acaoView{
+    width: 21px;
+    height: 17px;
+    border-radius: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    background-color: rgb(215, 211, 235);
+    margin-left: 4px;
+}
+.acaoDescricao{
+    font: 200 11px Roboto, sans-serif;
+    margin-left: 30px;
+    background-color: rgb(200, 202, 230);
+    border-radius: 5px;
+    padding: 1px 5px;
+    margin-top: 1px;
+}
+.acaoObservacao{
+    font: 200 11px Roboto, sans-serif;
+    margin-left: 40px;
+    background-color: rgb(200, 202, 230);
+    border-radius: 5px;
+    padding: 1px 5px;
+    margin-top: 1px;
+
+}

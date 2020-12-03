@@ -1,0 +1,246 @@
+[
+    
+    {
+        "codigo": "000002",
+        "data_cad": "19/09/2002",
+        "imprimir": "",
+        "devolvido": [
+            "0"
+        ],
+        "nivel": [
+            "1"
+        ],
+        "origem": [
+            "GABINETE"
+        ],
+        "nome": "CELESTE BARRETO GODOY VILELA",
+        "cpf": "",
+        "profissao": "",
+        "sexo": [
+            "F"
+        ],
+        "dataaniversario": "18/06/1946",
+        "quem": "STO AGOSTINHO",
+        "zona": "",
+        "secao": "",
+        "titulo": "",
+        "escola": "",
+        "foneres": "3322-0816 // 98210-2286",
+        "celulares": "",
+        "cep": "12244510",
+        "idlogradouro": "573714",
+        "tabelalogradouro": "cep",
+        "logradouro": "Avenida Major Aviador Jorge Mesquita",
+        "numero": "222",
+        "complemento": "COND ALTOS SERRA II",
+        "bairro": "Urbanova",
+        "cidade": "S\u00e3o Jos\u00e9 dos Campos",
+        "estado": "SP",
+        "obs": "LIGUEI EM 2010/11/12",
+        "obs1": "ESPOSA DO SR NEWTON, MINISTRA DA EUCARISTIA ,NA CAMP DE 2004 ,FEZ REUNI\u00c3\u0083O EM SUA CASA , AJUDOU NA CAMP 2004/2008/2012",
+        "id": "2",
+        "acao": "view",
+        "classificacao": [
+            "COMUNIDADE STO AGOSTINHO ",
+            "COMPROMISSO 2012 "
+        ],
+        "email": []
+    },
+    {
+        "codigo": "000003",
+        "data_cad": "20/06/2006",
+        "imprimir": "",
+        "devolvido": [
+            "0"
+        ],
+        "nivel": [
+            "1"
+        ],
+        "origem": [
+            "GABINETE"
+        ],
+        "nome": "FLAVIO RACHID HATUN",
+        "cpf": "",
+        "profissao": "",
+        "sexo": [
+            "M"
+        ],
+        "dataaniversario": "17/11/1953",
+        "quem": "STO AGOSTINHO",
+        "zona": "",
+        "secao": "",
+        "titulo": "",
+        "escola": "",
+        "foneres": "3949-1545 // 99713-0309 // ser 3922-9177",
+        "celulares": "",
+        "cep": "12244589",
+        "idlogradouro": "666113",
+        "tabelalogradouro": "cep",
+        "logradouro": "Rua Helena Reis Gomes Morais",
+        "numero": "52",
+        "complemento": "ALTOS SERRA I",
+        "bairro": "Urbanova",
+        "cidade": "S\u00e3o Jos\u00e9 dos Campos",
+        "estado": "SP",
+        "obs": "LIGUEI 2009/10/11",
+        "obs1": "MINISTRO DE EUCARISTIA  STO AGOSTINHO (URBANOVA), DENTISTA, ( CUNHADO DA MIRNA DO JAIRO PINTOS ) ADESIVOU O BORA PRETO COM FOTO  VER ATENDIMENTOS",
+        "id": "3",
+        "acao": "view",
+        "classificacao": [
+            "COOPERATIVAS ",
+            "COMUNIDADE STO AGOSTINHO ",
+            "ATENDIMENTOS 2009 "
+        ],
+        "email": [
+            "rachidodontologia@gmail.com"
+        ]
+    },
+    {
+        "codigo": "000004",
+        "data_cad": "20/06/2006",
+        "imprimir": "",
+        "devolvido": [
+            "0"
+        ],
+        "nivel": [
+            "1"
+        ],
+        "origem": [
+            "GABINETE"
+        ],
+        "nome": "JUVANITA MATOS VIANA DE OLIVEIRA",
+        "cpf": "",
+        "profissao": "",
+        "sexo": [
+            "F"
+        ],
+        "dataaniversario": "05/09/1951",
+        "quem": "CYBORG",
+        "zona": "0",
+        "secao": "0",
+        "titulo": "",
+        "escola": "",
+        "foneres": "3302-8059 ",
+        "celulares": "5512 -  98192-0009",
+        "cep": "12244453",
+        "idlogradouro": "573231",
+        "tabelalogradouro": "cep",
+        "logradouro": "Rua Ignacio Kasper",
+        "numero": "14",
+        "complemento": "COND RECANTO DA SERRA",
+        "bairro": "Urbanova",
+        "cidade": "S\u00e3o Jos\u00e9 dos Campos",
+        "estado": "SP",
+        "obs": "TIA NITA  // LIGUEI EM 2018//BETH, LIGOU 2020, APOIO 2020, CAD OK",
+        "obs1": "MINISTRA DE EUCARISTIA STO AGOSTINHO (URBANOVA), ESPOSA DO SR COSME,  (CTA),BARRACA DO CALDINHO  TIA NITA // TRAB COMO ASSESSORA DA LINDONICE VER ATENDIMENTO ARVORE EM 15 // PROCESSO 36004/15",
+        "id": "4",
+        "acao": "view",
+        "classificacao": [
+            "COMUNIDADE STO AGOSTINHO ",
+            "CONVITES / EVENTOS OFICIAIS ",
+            "ATENDIMENTOS CYBORG ",
+            "COMPROMISSO 16 ",
+            "LIDERANCA CAMPANHA 2020 "
+        ],
+        "email": [
+            "oliveirajuvanita@gmail.com"
+        ]
+    },
+    {
+        "codigo": "000005",
+        "data_cad": "20/06/2006",
+        "imprimir": "",
+        "devolvido": [
+            "0"
+        ],
+        "nivel": [
+            "1"
+        ],
+        "origem": [
+            "GABINETE"
+        ],
+        "nome": "PAULO FRANCISCO DOS SANTOS",
+        "cpf": "",
+        "profissao": "",
+        "sexo": [
+            "M"
+        ],
+        "dataaniversario": "12/04/1953",
+        "quem": "STO AGOSTINHO",
+        "zona": "0",
+        "secao": "0",
+        "titulo": "",
+        "escola": "",
+        "foneres": "3949-2354 // 3949-3007",
+        "celulares": "5512 - 98269-3789",
+        "cep": "12244240",
+        "idlogradouro": "572334",
+        "tabelalogradouro": "cep",
+        "logradouro": "Rua Benedito Pinotti",
+        "numero": "1051",
+        "complemento": "COND ELDORADO",
+        "bairro": "Urbanova",
+        "cidade": "S\u00e3o Jos\u00e9 dos Campos",
+        "estado": "SP",
+        "obs": "LIGUEI EM 2009,2010,2011,2012",
+        "obs1": "PAULO DA GRIMA, MINISTRO DE EUCARISTIA STO AGOSTINHO URBANOVA, MARIDO DA GRIMA",
+        "id": "5",
+        "acao": "view",
+        "classificacao": [
+            "COMUNIDADE STO AGOSTINHO ",
+            "COMPROMISSO 16 ",
+            "FAZER VISITAS PARA 2020 POS AGOSTO "
+        ],
+        "email": [
+            "pfranciscosantos@yahoo.com.br"
+        ]
+    },
+    {
+        "codigo": "000006",
+        "data_cad": "20/06/2006",
+        "imprimir": "",
+        "devolvido": [
+            "0"
+        ],
+        "nivel": [
+            "1"
+        ],
+        "origem": [
+            "GABINETE"
+        ],
+        "nome": "MARINA NICODETE CARVALHO SOARES",
+        "cpf": "",
+        "profissao": "",
+        "sexo": [
+            "F"
+        ],
+        "dataaniversario": "05/08/1960",
+        "quem": "STO AGOSTINHO",
+        "zona": "",
+        "secao": "",
+        "titulo": "",
+        "escola": "",
+        "foneres": "3949-1196",
+        "celulares": "",
+        "cep": "12244410",
+        "idlogradouro": "573373",
+        "tabelalogradouro": "cep",
+        "logradouro": "Rua Jo\u00c3\u00a3o Evangelista de Carvalho",
+        "numero": "63",
+        "complemento": "COND RECANTO DA SERRA",
+        "bairro": "Urbanova",
+        "cidade": "S\u00e3o Jos\u00e9 dos Campos",
+        "estado": "SP",
+        "obs": "RESP PELOS COROINHAS",
+        "obs1": "MINISTRA DE EUCARISTIA  STO AGOSTINHO  ( URBANOVA), COORDENADORA DOS COROINHAS",
+        "id": "6",
+        "acao": "view",
+        "classificacao": [
+            "COMUNIDADE STO AGOSTINHO ",
+            "CONVITES / EVENTOS OFICIAIS "
+        ],
+        "email": [
+            "marina_ncs@hotmail.com"
+        ]
+    }
+]

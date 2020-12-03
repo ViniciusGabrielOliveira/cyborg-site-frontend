@@ -1,0 +1,12 @@
+.listaTarefas {
+    margin: 17px;
+    border-radius: 15px;
+    background-color: rgb(107, 138, 173);
+}
+
+.pendentes {
+    margin-top: 20px;
+    padding: 5px;
+    color: aliceblue;
+    background-color: rgb(68, 87, 109);
+}

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import './styles.css'
 import noticiasAlter from '../../assets/noticiasAlter.json'
-import api from '../../services/api'
+import api from '../../services/apiSite'
 import ImgAlt from '../../assets/01.jpg';
 import Header from '../../components/header';
 import Carousel from '../../components/carousel';

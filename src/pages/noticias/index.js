@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 
 import './styles.css'
-import api from '../../services/api'
+import api from '../../services/apiSite'
 import ImgAlt from '../../assets/01.jpg';
 
 

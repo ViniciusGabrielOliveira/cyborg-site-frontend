@@ -1,0 +1,111 @@
+.new-solicitacao-container {
+    width: 100% - 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px;
+
+    align-items: center;
+}
+.new-solicitacao-container section {
+    max-width: 450px;
+    margin: auto;
+}
+.new-solicitacao-container section h1 {
+    margin: 64px 0 32px;
+    font-size: 32px;
+}
+
+
+.demandaHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    align-content: space-between;
+    margin: 9px auto;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 4px;
+}
+.demandaHeader p{
+    align-items: center;
+    margin-right: auto;
+}
+
+.demandaHeader button{
+    align-items: center;
+    margin-bottom: 0;
+    height: auto;
+    padding: 0;
+    align-self: center;
+    border: none;
+    color: rgb(0, 102, 255);
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.filter-container {
+    background-color: #c9ced8;
+    transition: filter 0.2s;
+    text-decoration-line: none;
+    display: block;
+    padding: 7px 0;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+.filter-container ul{
+    /* tirar o pontinho da linha */
+    list-style: none; 
+}
+
+.filter-container select{
+    width: 90%;
+    margin: 15px;
+}
+.filter-container input{
+    width: 87%;
+    margin: 8px 15px ;
+}
+.cardDemanda {
+    background-color: #ECF1F5;
+    transition: filter 0.2s;
+    text-decoration-line: none;
+    display: block;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 20px;
+      
+}
+
+.select-tipo-add select{
+    width: 83%;
+    margin-bottom: 9px;
+}
+.select-tipo-add input{
+    width: 80%;
+    margin-bottom: 9px;
+}
+
+.select-tipo-add button{
+    align-items: center;
+    margin-bottom: 0;
+    height: auto;
+    padding: 0;
+    align-self: center;
+    border: none;
+    color: rgb(0, 102, 255);
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.tarefas-ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    height: 0;
+    font: 400 14px Roboto, sans-serif;
+}
