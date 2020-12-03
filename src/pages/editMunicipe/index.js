@@ -243,7 +243,7 @@ export default function EditMunicipe(){
     }
 
     return(
-        <div className="new-incident-container">
+        <div className="new-municipe-container">
             <div className="content">
                 <section>
                     <h1>Editar Municipe</h1>
