@@ -186,7 +186,7 @@ export default function NewMunicipe(){
     }
 
     return(
-        <div className="new-municipe-container">
+        <div className="new-incident-container">
             <div className="content">
                 <section>
                     <h1>Cadastrar Municipe</h1>

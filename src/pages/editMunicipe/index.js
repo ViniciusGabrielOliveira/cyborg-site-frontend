@@ -42,7 +42,11 @@ export default function EditMunicipe(){
     const [sexo, setSexo] = useState("")
     const params = useParams();
     const [loadFones, setLoadFones] = useState(0)
-
+    const [status, setStatus] = useState('')
+    const [facebookUrl, setFacebookUrl] = useState('')
+    const [instagramUrl, setInstagramUrl] = useState('')
+    const [linkedinUrl, setLinkedinUrl] = useState('')
+    const [cra, setCra] = useState('')
 
 
     const history = useHistory();
@@ -73,7 +77,12 @@ export default function EditMunicipe(){
             setNumero(response.data.numero);
             setObs(response.data.obs);
             setSexo(response.data.sexo);
-            
+            setAvatar_url(response.data.avatar_url);
+            setStatus(response.data.status);
+            setFacebookUrl(response.data.facebookUrl);
+            setInstagramUrl(response.data.instagramUrl);
+            setLinkedinUrl(response.data.linkedinUrl);
+            setCra(response.data.cra);
 
         }, error => {
             if (error.response.status === 401){
@@ -243,8 +252,8 @@ export default function EditMunicipe(){
     }
 
     return(
-        <div className="new-municipe-container">
-            <div className="content">
+        <div className="home-container">
+            <div className="card">
                 <section>
                     <h1>Editar Municipe</h1>
 
@@ -257,12 +266,14 @@ export default function EditMunicipe(){
 
                 <form onSubmit={handleEditMunicipe}
                 >
+                    <p>Nome</p>                    
                     <input 
                         placeholder="Nome Completo"
                         value={nome}
                         onChange={e=> setNome(e.target.value)} 
                     />
-                    
+                    <hr/>                    
+                    <p>Sexo</p>
                         
                     <select onChange={e=> setSexo(e.target.value)}>
                         <option value={''}>
@@ -276,7 +287,8 @@ export default function EditMunicipe(){
                         </option>
                     </select>
                         
-                    
+                    <hr/>                    
+                    <p>CEP</p>
                     <input 
                         placeholder="CEP"
                         maxLength='10'
@@ -284,6 +296,8 @@ export default function EditMunicipe(){
                         onChange={e=> setCep(e.target.value)} 
                     />
                     
+                    <hr/>                    
+                    <p>Rua</p>
                     <div className= 'fone'>
                         <input 
                             placeholder="Procurar Rua"
@@ -304,32 +318,43 @@ export default function EditMunicipe(){
                             ))}             
                         </div>
                     }
+                    <hr/>                    
+                    <p>Número</p>
                     <input 
                         placeholder="Número"
                         value={numero}
                         onChange={e=> setNumero(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Complemento</p>
                     <input 
                         placeholder="Complemento"
                         value={complemento}
                         onChange={e=> setComplemento(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Bairro</p>
                     <input 
                         placeholder="Bairro"
                         value={bairro}
                         onChange={e=> setBairro(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Cidade</p>
                     <input 
                         placeholder="Cidade"
                         value={cidade}
                         onChange={e=> setCidade(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Estado</p>
                     <input 
                         placeholder="Estado"
                         value={estado}
                         onChange={e=> setEstado(e.target.value)} 
                     />
                     <hr/>
+                    <p>Nascimento</p>
                     <input 
                         placeholder="Nascimento"
                         type="date"
@@ -337,6 +362,20 @@ export default function EditMunicipe(){
                         onChange={e=> setNascimento(e.target.value)}
                     />
                     <hr/>
+                    <div className= 'fone'>
+                        <input 
+                            placeholder="Fone"
+                            value={fone}
+                            onChange={e=> setFone(e.target.value)} 
+                        />
+                        <button type="button" className="mais" 
+                            onClick={() => {
+                                setFones([...fones, fone])
+                                setFone('')
+                            }}>
+                            <FaPlusSquare  size={20} color="#a9a9a9" /> 
+                        </button>
+                    </div>
                     <div className="container-fones">
                         <ul>
                             {fonesAntigos && fonesAntigos.map(e => (
@@ -355,20 +394,7 @@ export default function EditMunicipe(){
                             ))}
                         </ul>
                     </div>
-                    <div className= 'fone'>
-                        <input 
-                            placeholder="Fone"
-                            value={fone}
-                            onChange={e=> setFone(e.target.value)} 
-                        />
-                        <button type="button" className="mais" 
-                            onClick={() => {
-                                setFones([...fones, fone])
-                                setFone('')
-                            }}>
-                            <FaPlusSquare  size={20} color="#a9a9a9" /> 
-                        </button>
-                    </div>
+                    
                     <ul className="fones-container">
                         {fones.map((fon, index) => (
                             <div className= 'fones' key={index} >
@@ -380,6 +406,20 @@ export default function EditMunicipe(){
                         ))}
                     </ul>
                     <hr/>
+                    <div className= 'fone'>
+                        <input 
+                            placeholder="Email"
+                            value={email}
+                            onChange={e=> setEmail(e.target.value)} 
+                        />
+                        <button type="button" className="mais" 
+                            onClick={() => {
+                                setEmails([...emails, email])
+                                setEmail('')
+                            }}>
+                            <FaPlusSquare  size={20} color="#a9a9a9" /> 
+                        </button>
+                    </div>
                     <div className="container-emails">
                         <ul>
                             {emailsAntigos && emailsAntigos.map(e => (
@@ -398,20 +438,7 @@ export default function EditMunicipe(){
                             ))}
                         </ul>
                     </div>
-                    <div className= 'fone'>
-                        <input 
-                            placeholder="Email"
-                            value={email}
-                            onChange={e=> setEmail(e.target.value)} 
-                        />
-                        <button type="button" className="mais" 
-                            onClick={() => {
-                                setEmails([...emails, email])
-                                setEmail('')
-                            }}>
-                            <FaPlusSquare  size={20} color="#a9a9a9" /> 
-                        </button>
-                    </div>
+                    
                     <ul className="fones-container">
                         {emails.map((emai, index) => (
                             <div className= 'fones' key={index} >
@@ -423,6 +450,7 @@ export default function EditMunicipe(){
                         ))}
                     </ul>
                     <hr/>
+                    <p>Classificação</p>
                     <div className= 'fone'>
                         
                         <select 
@@ -445,6 +473,7 @@ export default function EditMunicipe(){
                             <FaPlusSquare  size={20} color="#a9a9a9" /> 
                         </button>
                     </div>
+                    
                     <ul className="fones-container">
                         {classificacoes && classificacoes.map((classific, index) => (
                             <div className= 'fones' key={index} >
@@ -458,17 +487,60 @@ export default function EditMunicipe(){
                         ))}
                     </ul>
                     <hr/>
+                    <p>Obs</p>
                     <textarea
                         placeholder="Observação"
                         value={obs}
                         onChange={e=> setObs(e.target.value)}
                     />
+                    <hr/>
+                    <p>Avatar</p>
                     <input 
                         placeholder="Avatar-URL"
                         value={avatar_url}
                         onChange={e=> setAvatar_url(e.target.value)} 
                     />
+
+                    <hr/>
+                    <p>Facebook - URL</p>
+                    <input 
+                        placeholder="Facebook-URL"
+                        value={facebookUrl}
+                        onChange={e=> setFacebookUrl(e.target.value)} 
+                    />
+
                     
+                    <hr/>
+                    <p>Instagram - URL</p>
+                    <input 
+                        placeholder="Instagram-URL"
+                        value={instagramUrl}
+                        onChange={e=> setInstagramUrl(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>LinkedIn - URL</p>
+                    <input 
+                        placeholder="LinkedIn-URL"
+                        value={linkedinUrl}
+                        onChange={e=> setLinkedinUrl(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Status</p>
+                    <input 
+                        placeholder="Status"
+                        value={status}
+                        onChange={e=> setStatus(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>CRA</p>
+                    <input 
+                        placeholder="CRA"
+                        value={cra}
+                        onChange={e=> setCra(e.target.value)} 
+                    />
 
                     <button className="button" type='submit'>Cadastrar</button>
                 </form>
