@@ -91,71 +91,67 @@ export default function NewTarefa(){
 
 
     return(
-        <div className="new-solicitacao-container">
-            <section>
-                <h1>Nova Tarefa</h1>
+        <div className="home-container">
+            <div className="card">
 
-                <div className="back-link" >
-                    <FiArrowLeft size={16} color="gray" onClick={()=> history.goBack()} />
-                    Voltar
-                </div>
-            </section>
+                <section>
+                    <h1>Nova Tarefa</h1>
 
-            <hr/>
+                    <div className="back-link" >
+                        <FiArrowLeft size={16} color="gray" onClick={()=> history.goBack()} />
+                        Voltar
+                    </div>
+                </section>
+                <hr/>|
+
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        placeholder="Tipo"
+                        value={tipo}
+                        onChange={e=> setTipo(e.target.value)} 
+                    />
+                    <textarea 
+                        placeholder="Descrição"
+                        value={descricao}
+                        onChange={e=> setDescricao(e.target.value)} 
+                    />
+                    <select onChange={e=> setStatus(e.target.value)}>
+                        
+                        {optionsStatus.map((value, index) =>(
+                            <option value={value} key={index}>
+                                {value}
+                            </option>
+                        ))}
+                        
+                    </select>
+                    <input 
+                        placeholder="Secretaria"
+                        value={secretaria}
+                        onChange={e=> setSecretaria(e.target.value)} 
+                    />
+                    <textarea
+                        placeholder="Observação"
+                        value={obs}
+                        onChange={e=> setObs(e.target.value)}
+                    />
+                    <input 
+                        placeholder="Prioridade"
+                        value={prioridade}
+                        onChange={e=> setPrioridade(e.target.value)} 
+                        type = 'number'
+                    />
+                    <input 
+                        placeholder="Prazo_entrega"
+                        value={prazo_entrega}
+                        onChange={e=> setPrazo_entrega(e.target.value)} 
+                        type = 'datetime-local'
+                    />
+
+                    <button className="button" type ='submit'>Cadastrar</button>
+
+                </form>
             
-
-
-
-            
-            <form onSubmit={handleSubmit}>
-                <input 
-                    placeholder="Tipo"
-                    value={tipo}
-                    onChange={e=> setTipo(e.target.value)} 
-                />
-                <textarea 
-                    placeholder="Descrição"
-                    value={descricao}
-                    onChange={e=> setDescricao(e.target.value)} 
-                />
-                <select onChange={e=> setStatus(e.target.value)}>
-                    
-                    {optionsStatus.map((value, index) =>(
-                        <option value={value} key={index}>
-                            {value}
-                        </option>
-                    ))}
-                    
-                </select>
-                <input 
-                    placeholder="Secretaria"
-                    value={secretaria}
-                    onChange={e=> setSecretaria(e.target.value)} 
-                />
-                <textarea
-                    placeholder="Observação"
-                    value={obs}
-                    onChange={e=> setObs(e.target.value)}
-                />
-                <input 
-                    placeholder="Prioridade"
-                    value={prioridade}
-                    onChange={e=> setPrioridade(e.target.value)} 
-                    type = 'number'
-                />
-                <input 
-                    placeholder="Prazo_entrega"
-                    value={prazo_entrega}
-                    onChange={e=> setPrazo_entrega(e.target.value)} 
-                    type = 'datetime-local'
-                />
-
-                <button className="button" type ='submit'>Cadastrar</button>
-
-
-            </form>
-            
-
+            </div>
 
         </div>
     )
