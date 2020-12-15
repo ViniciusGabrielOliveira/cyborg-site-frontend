@@ -18,7 +18,6 @@ Moment.locale('pt-BR');
 export default function DetailTarefa(){
     const token = 'JWT ' + localStorage.getItem('token');
     const history = useHistory();
-    const [teste, setTeste] = useState(0);
 
     async function PostClass(e){
         let res        
@@ -106,73 +105,58 @@ export default function DetailTarefa(){
         let municipeId = 0;
         let dados = JSON.parse(JSON.stringify(municipedados));
         console.log(municipedados);
-        // await api.post('gestao/municipe/', dados, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `JWT ${localStorage.getItem('token')}`
-        //     }
-        // }).then(response => {
-        //     console.log(response)
-        //     if (response.data.id>0) {
-        //         municipeId = response.data.id
-        //     }
-        // }, error => {
-        // }).then(()=>{
-        //     if (municipeId === 0){
-        //         api.get('gestao/municipes/?nome1='+municipedados.nome, {
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                 'Authorization': `JWT ${localStorage.getItem('token')}`
-        //             }
-        //         }).then(response => {
-        //             if(response.data.count > 0) {
-        //                 municipeId = response.data.results[0].id
-        //             }                    
-        //         })
-        //     }
-        //     if (fones.length>0){                
-        //         fones.map(fone => (
-        //             api.post('gestao/fones/', {
-        //                 'numero': fone,
-        //                 'municipe': municipeId
-        //             }, {
-        //                 headers: {
-        //                     'Content-Type': 'application/json',
-        //                     'Authorization': `JWT ${localStorage.getItem('token')}`
-        //                 }
-        //             }).then(response => {
-                        
-        //             }, error => {
-            
-                        
-        //                 if (error.response.status === 401){
-        //                     history.push('/logon');
-        //                 }
-        //             })
-        //         ))
-        //     }
-        // }).then(()=>{
-        //     if (emails.length>0){
-        //         emails.map(email => (
-        //             api.post('gestao/emails/', {
-        //                 'email': email,
-        //                 'municipe': municipeId
-        //             }, {
-        //                 headers: {
-        //                     'Content-Type': 'application/json',
-        //                     'Authorization': `JWT ${localStorage.getItem('token')}`
-        //                 }
-        //             }).then(response => {
-                        
-        //             }, error => {
-            
-        //                 if (error.response.status === 401){
-        //                     history.push('/logon');
-        //                 }
-        //             })
-        //         ))
-        //     }            
-        // })
+        await api.post('gestao/municipe/', dados, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }
+        }).then(response => {
+            console.log(response)
+            if (response.data.id>0) {
+                municipeId = response.data.id
+            }
+        }, error => {
+        }).then(()=>{
+            if (municipeId === 0){
+                api.get('gestao/municipes/?nome1='+municipedados.nome, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `JWT ${localStorage.getItem('token')}`
+                    }
+                }).then(response => {
+                    if(response.data.count > 0) {
+                        municipeId = response.data.results[0].id
+                    }                    
+                })
+            }
+            if (fones.length>0){                
+                fones.map(fone => (
+                    api.post('gestao/fones/', {
+                        'numero': fone,
+                        'municipe': municipeId
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `JWT ${localStorage.getItem('token')}`
+                        }
+                    })
+                ))
+            }
+        }).then(()=>{
+            if (emails.length>0){
+                emails.map(email => (
+                    api.post('gestao/emails/', {
+                        'email': email,
+                        'municipe': municipeId
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `JWT ${localStorage.getItem('token')}`
+                        }
+                    })
+                ))
+            }            
+        })
     }
 
     async function GetClass(e){
