@@ -186,8 +186,8 @@ export default function NewMunicipe(){
     }
 
     return(
-        <div className="new-incident-container">
-            <div className="content">
+        <div className="home-container">
+            <div className="card">
                 <section>
                     <h1>Cadastrar Municipe</h1>
 
@@ -200,6 +200,7 @@ export default function NewMunicipe(){
 
                 <form onSubmit={handleNewMunicipe}
                 >
+                    
                     <input 
                         placeholder="Nome Completo"
                         value={nome}
