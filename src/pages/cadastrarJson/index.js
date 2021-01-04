@@ -186,8 +186,8 @@ export default function DetailTarefa(){
             if ((e.ORIGEM)) {data['origem']=(e.ORIGEM)};
             if ((e.CPF)) {data['cpf']=(e.CPF)};
             if (e.PROFISSAO) {data['profissao']=e.PROFISSAO};
-            if (e.ZONA>0) {data['zona']=parseInt(e.ZONA.replace(/\D/g, ''))};
-            if (e.SECAO>0) {data['secao']=parseInt(e.SECAO.replace(/\D/g, ''))};
+            if (e.ZONA>0) {data['zona']=e.ZONA};
+            if (e.SECAO>0) {data['secao']=e.SECAO};
             if (e.TITULO>0) {data['titulo']=e.TITULO};
             if (e.ESCOLA) {data['escola']=e.ESCOLA};
 
