@@ -96,24 +96,14 @@ export default function HomeSite(){
 
         if(outView === 2) {
             console.log("outView2")
-            let page2 = page
+            
 
             while(page != null){
                 
-                const novapagina = page2 + 1;
+                const novapagina = page + 1;
                 setPage(novapagina);
-    
-                api.get(url, {
-                    headers: {
-                        Authorization: token,
-                    }
-                }).then(response => {
-                    const novosMunicipes = [...municipes]
-                    novosMunicipes.push(...response.data.results)
-                    setMunicipes(novosMunicipes);
-                    setTotal(response.data.count);            
-                })
-                console.log(page)
+                getMunicipes(url);
+                
             }
             setLoading(false)
             
@@ -121,6 +111,21 @@ export default function HomeSite(){
         
 
     }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
+
+
+    function getMunicipes(url2){
+        api.get(url2, {
+            headers: {
+                Authorization: token,
+            }
+        }).then(response => {
+            const novosMunicipes = [...municipes]
+            novosMunicipes.push(...response.data.results)
+            setMunicipes(novosMunicipes);
+            setTotal(response.data.count);            
+        })
+        console.log(page)
+    }
 
     function zerar(){
         setTotal(0);
