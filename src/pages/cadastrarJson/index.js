@@ -176,7 +176,8 @@ export default function DetailTarefa(){
             if (e.BAIRRO) {data['bairro']=e.BAIRRO}
             if (e.CIDADE) {data['cidade']=e.CIDADE}
             if (e.UF) {data['estado']=e.UF}
-            if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO.substring(3,6)+e.dataaniversario.substring(0,3)+e.dataaniversario.substring(6,10)).format()}
+            console.log(e.DATA_ANIVERSARIO)
+            // if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO.substring(3,6)+e.dataaniversario.substring(0,3)+e.dataaniversario.substring(6,10)).format()}
             data['obs']='codigo antigo: '+e.IDENTIFICADOR+' '+(e.OBS)+' - '+(e.OBS1)+' - '+e.FONE+' - '+e.CELULAR
             data['idantigo']=e.IDENTIFICADOR
             if (e.CEP) {data['cep']=parseInt(e.CEP.replace(/\D/g, ''))}
