@@ -168,7 +168,7 @@ export default function HomeSite(){
                         <FaPrint className="icon" size={20} color="#fff" onClick={() => window.print()}/>
                         <FaFilePdf className="icon" size={20} color="#fff" />
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
-                            setLoading(true);
+                            // setLoading(true);
                             setOutView(2);
                             
                         }} />
