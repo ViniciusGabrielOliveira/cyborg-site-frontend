@@ -96,14 +96,25 @@ export default function HomeSite(){
 
         if(outView === 2) {
             console.log("outView2")
-            
+            let page2 = page
+            let url3 = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue+'&page='+page2
 
-            while(page != null){
+
+            while(url3 != null){
                 
-                const novapagina = page + 1;
-                setPage(novapagina);
-                getMunicipes(url);
-                
+                    
+                api.get(url3, {
+                    headers: {
+                        Authorization: token,
+                    }
+                }).then(response => {
+                    const novosMunicipes = [...municipes]
+                    novosMunicipes.push(...response.data.results)
+                    url3 = response.data.next
+                    setMunicipes(novosMunicipes);
+                    setTotal(response.data.count);            
+                })
+                console.log(url3)
             }
             setLoading(false)
             
@@ -112,21 +123,7 @@ export default function HomeSite(){
 
     }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
 
-
-    function getMunicipes(url2){
-        api.get(url2, {
-            headers: {
-                Authorization: token,
-            }
-        }).then(response => {
-            const novosMunicipes = [...municipes]
-            novosMunicipes.push(...response.data.results)
-            setMunicipes(novosMunicipes);
-            setTotal(response.data.count);            
-        })
-        console.log(page)
-    }
-
+    
     function zerar(){
         setTotal(0);
         setPage(1);
