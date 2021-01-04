@@ -398,7 +398,7 @@ export default function HomeSite(){
             </div>
         );
     
-    if (outView === 2)
+    if (outView === 2 && loading === false)
         return (
             <Etiquetas>
                 <div className="options-container">
