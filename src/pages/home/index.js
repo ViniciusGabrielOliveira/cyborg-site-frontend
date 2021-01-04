@@ -95,7 +95,7 @@ export default function HomeSite(){
         
 
         if(outView === 2) {
-            
+            console.log("outView2")
             while(page != null){
                 
                 const novapagina = page + 1;
@@ -169,7 +169,7 @@ export default function HomeSite(){
                         <FaFilePdf className="icon" size={20} color="#fff" />
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
                             setLoading(true);
-                            await setOutView(2);
+                            setOutView(2);
                             
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
