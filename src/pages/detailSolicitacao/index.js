@@ -32,6 +32,7 @@ export default function DetailSolicitacao(){
                 Authorization: token,
             }
         }).then(response => {
+            console.log(response);
             setSolicitacao(response.data.results);
             api.get(url + response.data.municipe, {
                 headers: {
@@ -153,7 +154,8 @@ export default function DetailSolicitacao(){
                             <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
                             <p>{demanda.descricao}</p>
                         </div>
-                        <ul>
+
+                        {solicitacao.tarefas && <ul>
                             {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
                                 <li key={e2.id} >
                                     <div className='acaoContainer'>
@@ -194,7 +196,7 @@ export default function DetailSolicitacao(){
                                     {e3.observacao && <div className='acaoObservacao'>{e3.observacao}</div>}                                   
                                 </li>
                             ))}
-                        </ul>                                               
+                        </ul>}                                               
                     </div>                    
                 </div>                                                                    
             </div>           
