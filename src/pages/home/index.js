@@ -116,7 +116,7 @@ export default function HomeSite(){
         }
         
 
-    }, [scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
+    }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
 
     function zerar(){
         setTotal(0);
