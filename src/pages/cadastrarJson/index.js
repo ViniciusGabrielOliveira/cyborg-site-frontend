@@ -123,6 +123,7 @@ export default function DetailTarefa(){
                         'Authorization': `JWT ${localStorage.getItem('token')}`
                     }
                 }).then(response => {
+                    console.log(response)
                     if(response.data.count > 0) {
                         municipeId = response.data.results[0].id
                     }                    
