@@ -103,7 +103,7 @@ export default function DetailTarefa(){
     async function postMunicipe(municipedados, fones){
         let municipeId = 0;
         let dados = JSON.parse(JSON.stringify(municipedados));
-        console.log(municipedados);
+        
         await api.post('gestao/municipe/', dados, {
             headers: {
                 'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ export default function DetailTarefa(){
                         'Authorization': `JWT ${localStorage.getItem('token')}`
                     }
                 }).then(response => {
-                    console.log(response)
+                    
                     if(response.data.count > 0) {
                         municipeId = response.data.results[0].id
                     }                    
