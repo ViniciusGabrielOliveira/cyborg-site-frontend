@@ -31,7 +31,8 @@ export default function HomeSite(){
     const [scrollRadio, setScrollRadio] = useState(null);
     const [outView, setOutView] = useState(1);
     const [getClassificacoes, setGetClassificacoes] = useState([]);
-
+    const [url2, setUrl2] = useState('');
+    const [cont, setCont] = useState(0);
 
 
     useEffect(() =>{
@@ -44,6 +45,8 @@ export default function HomeSite(){
         let mes = mesNascimento;
         let url = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue+'&page='+page
         const urlClassific = 'gestao/classificacao_list'
+        setCont(0);
+        setUrl2(url);
 
         api.get(urlClassific, {
             headers: {
@@ -92,47 +95,30 @@ export default function HomeSite(){
             setLoading(false);
         }
 
-        
-
-        if(outView === 2) {
-            console.log("outView2")
-            let page2 = page
-            let url3 = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue+'&page='+page2
-            console.log(url3)
-
-            let url4
-            let cont = 0
-
-            while(url4 != null){
                 
-                
-                if(cont === 0){
-                    url4 = url3
-                }
-                
-                
-                console.log(url4)
-                console.log(cont)
-                api.get(url4, {
-                    headers: {
-                        Authorization: token,
-                    }
-                }).then(response => {
-                    const novosMunicipes = [...municipes];
-                    novosMunicipes.push(...response.data.results);
-                    url4 = response.data.next;
-                    cont += 1;                    
-                    setMunicipes(novosMunicipes);
-                    setTotal(response.data.count);            
-                })
-            }
-            setLoading(false)
-            
-        }
-        
 
     }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
 
+    useEffect(()=> {
+        
+        if(outView === 2 && cont > 0) {
+           
+            api.get(url2, {
+                headers: {
+                    Authorization: token,
+                }
+            }).then(response => {
+                const novosMunicipes = [...municipes];
+                novosMunicipes.push(...response.data.results);
+                setUrl2(response.data.next);
+                setCont(cont + 1)                    
+                setMunicipes(novosMunicipes);
+                setTotal(response.data.count);            
+            })
+        }
+        setLoading(false)
+        
+    }, [outView, cont])
     
     function zerar(){
         setTotal(0);
@@ -184,6 +170,7 @@ export default function HomeSite(){
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
                             // setLoading(true);
                             setOutView(2);
+                            setCont(cont + 1);
                             
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
