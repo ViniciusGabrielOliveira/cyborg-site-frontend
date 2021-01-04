@@ -103,7 +103,7 @@ export default function HomeSite(){
                 
                 let url4
                 url4 = url3
-                    
+                console.log(url4)
                 api.get(url4, {
                     headers: {
                         Authorization: token,
@@ -111,8 +111,7 @@ export default function HomeSite(){
                 }).then(response => {
                     const novosMunicipes = [...municipes]
                     novosMunicipes.push(...response.data.results)
-                    url3 = response.data.next
-                    console.log(url3)
+                    url3 = response.data.next                    
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
