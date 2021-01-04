@@ -102,6 +102,7 @@ export default function HomeSite(){
 
             while(url3 != null){
                 
+                console.log(url3)
                     
                 api.get(url3, {
                     headers: {
@@ -114,7 +115,6 @@ export default function HomeSite(){
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
-                console.log(url3)
             }
             setLoading(false)
             
