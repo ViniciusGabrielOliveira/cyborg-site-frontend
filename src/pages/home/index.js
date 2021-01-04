@@ -111,7 +111,9 @@ export default function HomeSite(){
                 const novosMunicipes = [...municipes];
                 novosMunicipes.push(...response.data.results);
                 setUrl2(response.data.next);
-                setCont(cont + 1)                    
+                console.log(response.data.next);
+                console.log(municipes.length);
+                setCont(cont + 1);                 
                 setMunicipes(novosMunicipes);
                 setTotal(response.data.count);            
             })
