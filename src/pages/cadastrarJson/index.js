@@ -8,7 +8,7 @@ import './styles.css'
 import 'moment-timezone';
 import 'moment/locale/pt-br';
 
-import json from '../../services/municipes.json'
+import json from '../../services/banco.json'
 
 Moment.tz.setDefault('UTC');
 Moment.locale('pt-BR');
