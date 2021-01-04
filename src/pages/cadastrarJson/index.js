@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory} from 'react-router-dom';
+// import { useHistory} from 'react-router-dom';
 import utf8 from 'utf8';
 
 import api from '../../services/api';
@@ -8,67 +8,66 @@ import './styles.css'
 import 'moment-timezone';
 import 'moment/locale/pt-br';
 
-import json from '../../services/banco1.json'
-import { useState } from 'react';
+import json from '../../services/banco.json'
 
 Moment.tz.setDefault('UTC');
 Moment.locale('pt-BR');
 
 
 export default function DetailTarefa(){
-    const token = 'JWT ' + localStorage.getItem('token');
-    const history = useHistory();
+    // const token = 'JWT ' + localStorage.getItem('token');
+    // const history = useHistory();
 
-    async function PostClass(e){
-        let res        
+    // async function PostClass(e){
+    //     let res        
 
-        await api.post("gestao/classificacao/", {
-            "nome": e
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            }
-        }).then(response => {
-            res = response.data.id
-        }, error => {    
-            if (error.response.status === 401){
-                history.push('/logon');
-            }
-        })
+    //     await api.post("gestao/classificacao/", {
+    //         "nome": e
+    //     }, {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': token
+    //         }
+    //     }).then(response => {
+    //         res = response.data.id
+    //     }, error => {    
+    //         if (error.response.status === 401){
+    //             history.push('/logon');
+    //         }
+    //     })
         
         
-        return res
-    }
+    //     return res
+    // }
 
     
-    async function GetClassId(e){
+    // async function GetClassId(e){
 
-        let resposta = 0
+    //     let resposta = 0
         
-        let classifi = e.trim()
+    //     let classifi = e.trim()
         
 
-        await api.get("gestao/filterclass/?classificacao=" + classifi, {
-            headers: {
-                Authorization: token,
-            }
-        }).then(response => {
+    //     await api.get("gestao/filterclass/?classificacao=" + classifi, {
+    //         headers: {
+    //             Authorization: token,
+    //         }
+    //     }).then(response => {
                         
-            if (response.data.count > 0) {
-                resposta = response.data.results[0].id;
-            }else{
-                resposta = PostClass(classifi);
-            }
-        }, error => {
-            if (error.response.status === 401){
-                history.push('/logon');
-            }
-        })
+    //         if (response.data.count > 0) {
+    //             resposta = response.data.results[0].id;
+    //         }else{
+    //             resposta = PostClass(classifi);
+    //         }
+    //     }, error => {
+    //         if (error.response.status === 401){
+    //             history.push('/logon');
+    //         }
+    //     })
 
-        return resposta;
+    //     return resposta;
         
-    }
+    // }
 
     function TreatFones(fones){
         let fones3 = []
@@ -101,7 +100,7 @@ export default function DetailTarefa(){
     }
 
 
-    async function postMunicipe(municipedados, fones, emails){
+    async function postMunicipe(municipedados, fones){
         let municipeId = 0;
         let dados = JSON.parse(JSON.stringify(municipedados));
         console.log(municipedados);
@@ -111,7 +110,6 @@ export default function DetailTarefa(){
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }
         }).then(response => {
-            console.log(response)
             if (response.data.id>0) {
                 municipeId = response.data.id
             }
@@ -142,80 +140,61 @@ export default function DetailTarefa(){
                     })
                 ))
             }
-        }).then(()=>{
-            if (emails.length>0){
-                emails.map(email => (
-                    api.post('gestao/emails/', {
-                        'email': email,
-                        'municipe': municipeId
-                    }, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `JWT ${localStorage.getItem('token')}`
-                        }
-                    })
-                ))
-            }            
         })
     }
 
-    async function GetClass(e){
-        let classi = [];
+    // async function GetClass(e){
+    //     let classi = [];
             
-        await e.map(async x => {
+    //     await e.map(async x => {
              
-            classi.push(await GetClassId(x));
+    //         classi.push(await GetClassId(x));
 
-        })
+    //     })
 
-        return classi
-    }    
+    //     return classi
+    // }    
+
     async function cadastrarJson(){
         
 
         json.map( async e => { 
             let data = {};
             let fones = [];
-            let emails = [];
-            let classificacoes = {};
 
-            if(e.codigo === "") return;
+            if(e.IDENTIFICADOR
+                 === "") return;
 
-            data['nome']= utf8.decode(e.nome);
-            data['sexo']= e.sexo[0];
+            data['nome']= utf8.decode(e.NOME);
+            data['sexo']= e.SEXO;
             data['cadastradoPor']= 'gabinete';
 
-            if (e.quem) {data['indicado_por']=e.quem}
-            if (e.logradouro) {data['logradouro']=utf8.decode(e.logradouro)}
-            if (e.numero) {data['numero']=e.numero}
-            if (e.complemento) {data['complemento']=e.complemento}
-            if (e.bairro) {data['bairro']=e.bairro}
-            if (e.cidade) {data['cidade']=e.cidade}
-            if (e.estado) {data['estado']=e.estado}
-            if (e.dataaniversario) {data['nascimento']=Moment(e.dataaniversario.substring(3,6)+e.dataaniversario.substring(0,3)+e.dataaniversario.substring(6,10)).format()}
-            data['obs']='codigo antigo: '+e.codigo+' '+utf8.decode(e.obs)+' - '+utf8.decode(e.obs1)+' - '+e.foneres+' - '+e.celulares
-            if (e.cep) {data['cep']=parseInt(e.cep.replace(/\D/g, ''))}
+            if (e.QUEM) {data['indicado_por']=e.QUEM}
+            if (e.LOGRADOURO) {data['logradouro']=utf8.decode(e.LOGRADOURO)}
+            if (e.NUMERO) {data['numero']=e.NUMERO}
+            if (e.COMPLEMENTO) {data['complemento']=e.COMPLEMENTO}
+            if (e.BAIRRO) {data['bairro']=e.BAIRRO}
+            if (e.CIDADE) {data['cidade']=e.CIDADE}
+            if (e.UF) {data['estado']=e.UF}
+            if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO.substring(3,6)+e.dataaniversario.substring(0,3)+e.dataaniversario.substring(6,10)).format()}
+            data['obs']='codigo antigo: '+e.IDENTIFICADOR+' '+utf8.decode(e.OBS)+' - '+utf8.decode(e.OBS1)+' - '+e.FONE+' - '+e.CELULAR
+            data['idantigo']=e.IDENTIFICADOR
+            if (e.CEP) {data['cep']=parseInt(e.CEP.replace(/\D/g, ''))}
 
             
-
-            if (e.classificacao) classificacoes[0] = await GetClass(e.classificacao);
             
-            data['classificacoes'] = JSON.stringify(classificacoes);
-            
-            if (utf8.decode(e.origem[0])) {data['origem']=utf8.decode(e.origem[0])};
-            if (utf8.decode(e.cpf)) {data['cpf']=utf8.decode(e.cpf)};
-            if (e.profissao) {data['profissao']=e.profissao};
-            if (e.zona>0) {data['zona']=parseInt(e.zona.replace(/\D/g, ''))};
-            if (e.secao>0) {data['secao']=parseInt(e.secao.replace(/\D/g, ''))};
-            if (e.titulo>0) {data['titulo']=e.titulo};
-            if (e.escola) {data['escola']=e.escola};
+            if (utf8.decode(e.ORIGEM)) {data['origem']=utf8.decode(e.ORIGEM)};
+            if (utf8.decode(e.CPF)) {data['cpf']=utf8.decode(e.CPF)};
+            if (e.PROFISSAO) {data['profissao']=e.PROFISSAO};
+            if (e.ZONA>0) {data['zona']=parseInt(e.ZONA.replace(/\D/g, ''))};
+            if (e.SECAO>0) {data['secao']=parseInt(e.SECAO.replace(/\D/g, ''))};
+            if (e.TITULO>0) {data['titulo']=e.TITULO};
+            if (e.ESCOLA) {data['escola']=e.ESCOLA};
 
-            fones = TreatFones(e.foneres+'+'+e.celulares);
-            emails = e.email
+            fones = TreatFones(e.FONE+'+'+e.CELULAR);
 
-            // console.log(data)
 
-            postMunicipe(data,fones,emails);
+            postMunicipe(data,fones);
             
 
             
