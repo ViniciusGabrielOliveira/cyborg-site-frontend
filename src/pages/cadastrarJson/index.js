@@ -138,7 +138,8 @@ export default function DetailTarefa(){
                             'Content-Type': 'application/json',
                             'Authorization': `JWT ${localStorage.getItem('token')}`
                         }
-                    }).then(error => {
+                    }).then(response => {
+                    }, error => {
                         console.log(error.response.data)
                     })
                 ))
