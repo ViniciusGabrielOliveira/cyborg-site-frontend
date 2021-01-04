@@ -161,7 +161,7 @@ export default function HomeSite(){
                         <FaFilePdf className="icon" size={20} color="#fff" />
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
                             await setOutView(2);
-                            window.print()
+                            
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
                         
@@ -427,7 +427,7 @@ export default function HomeSite(){
                     ))}
                     
                 </ul>
-                <div ref={scrollObserver}></div>
+                <div ref={scrollObserver, window.print()}></div>
             </Etiquetas>
         );
 }
