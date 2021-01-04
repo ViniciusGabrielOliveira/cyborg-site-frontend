@@ -202,11 +202,13 @@ export default function DetailTarefa(){
 
             await postMunicipe(data,fones);
 
-            console.log("ACABOU!")
+            
             
 
             
         })
+
+        console.log("ACABOU!")
         
     }
 
