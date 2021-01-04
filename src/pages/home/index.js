@@ -99,12 +99,12 @@ export default function HomeSite(){
             let page2 = page
             let url3 = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue+'&page='+page2
 
-
             while(url3 != null){
                 
-                console.log(url3)
+                let url4
+                url4 = url3
                     
-                api.get(url3, {
+                api.get(url4, {
                     headers: {
                         Authorization: token,
                     }
@@ -112,6 +112,7 @@ export default function HomeSite(){
                     const novosMunicipes = [...municipes]
                     novosMunicipes.push(...response.data.results)
                     url3 = response.data.next
+                    console.log(url3)
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
