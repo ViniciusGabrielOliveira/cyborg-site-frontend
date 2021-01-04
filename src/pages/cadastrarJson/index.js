@@ -8,7 +8,7 @@ import './styles.css'
 import 'moment-timezone';
 import 'moment/locale/pt-br';
 
-import json from '../../services/banco.json'
+import json from '../../services/municipes.json'
 
 Moment.tz.setDefault('UTC');
 Moment.locale('pt-BR');
@@ -114,7 +114,7 @@ export default function DetailTarefa(){
                 municipeId = response.data.id
             }
         }, error => {
-            console.log(error.response)
+            console.log(error.response.data)
         }).then(()=>{
             if (municipeId === 0){
                 api.get('gestao/municipes/?nome1='+municipedados.nome, {
