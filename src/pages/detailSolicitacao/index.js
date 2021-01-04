@@ -114,21 +114,23 @@ export default function DetailSolicitacao(){
                     <div className='solicitacoesContainer'>
                         
 
-                        <div className='solicitHeader'>                            
-                            <h3>Solicitação no dia {Moment(solicitacao.data).format('DD/MM/YY')}</h3>
-                            <div className='containerButtons'>
-                                <div className='solicitaStatus' />
-                                <button type="button" 
-                                    onClick={()=> {
-                                        history.push('/tarefa/new')
-                                        localStorage.setItem('municipeId', municipe.id)
-                                        localStorage.setItem('solicitacaoId', solicitacao.id)
-                                        localStorage.setItem('demandaId', 0)
-                                    }} className='solicitaAdd'>
-                                    <FaPlusCircle size={15} /> 
-                                </button>
-                            </div>   
-                        </div>
+                        {solicitacao &&
+                            <div className='solicitHeader'>                            
+                                <h3>Solicitação no dia {Moment(solicitacao.data).format('DD/MM/YY')}</h3>
+                                <div className='containerButtons'>
+                                    <div className='solicitaStatus' />
+                                    <button type="button" 
+                                        onClick={()=> {
+                                            history.push('/tarefa/new')
+                                            localStorage.setItem('municipeId', municipe.id)
+                                            localStorage.setItem('solicitacaoId', solicitacao.id)
+                                            localStorage.setItem('demandaId', 0)
+                                        }} className='solicitaAdd'>
+                                        <FaPlusCircle size={15} /> 
+                                    </button>
+                                </div>   
+                            </div>
+                        }
                           
                         <hr/>
                         <div className='demanda-container'>
