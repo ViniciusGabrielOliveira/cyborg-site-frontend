@@ -96,9 +96,11 @@ export default function HomeSite(){
 
         if(outView === 2) {
             console.log("outView2")
+            let page2 = page
+
             while(page != null){
                 
-                const novapagina = page + 1;
+                const novapagina = page2 + 1;
                 setPage(novapagina);
     
                 api.get(url, {
