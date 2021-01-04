@@ -114,6 +114,7 @@ export default function DetailTarefa(){
                 municipeId = response.data.id
             }
         }, error => {
+            console.log(error.data)
         }).then(()=>{
             if (municipeId === 0){
                 api.get('gestao/municipes/?nome1='+municipedados.nome, {
