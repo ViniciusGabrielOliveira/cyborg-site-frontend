@@ -148,9 +148,12 @@ export default function HomeSite(){
     })
 
     
-    
+    if (loading === true)
+        return(
+            <h1>LOADING...</h1>
+        )
 
-    if (outView === 1) 
+    if (outView === 1 && loading === false) 
         return (
             <div className="home-container">
             
