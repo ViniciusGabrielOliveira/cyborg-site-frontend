@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useHistory} from 'react-router-dom';
 // import utf8 from 'utf8';
 
@@ -15,6 +15,9 @@ Moment.locale('pt-BR');
 
 
 export default function DetailTarefa(){
+
+    const [contador, setContador] = useState(0);
+
     // const token = 'JWT ' + localStorage.getItem('token');
     // const history = useHistory();
 
@@ -162,8 +165,12 @@ export default function DetailTarefa(){
 
     async function cadastrarJson(){
         
+        
 
         json.map( async e => { 
+
+            
+
             let data = {};
             let fones = [];
 
@@ -203,7 +210,7 @@ export default function DetailTarefa(){
             await postMunicipe(data,fones);
 
             
-            
+            setContador(contador + 1);
 
             
         })
@@ -217,8 +224,8 @@ export default function DetailTarefa(){
         <div className="home-container">
             <button onClick={async()=> {
                 await cadastrarJson();
-                console.log("ACABOU!")
             }}>cadastrar json</button> 
+            <h1>{contador}</h1>
         </div>
     )
 }
