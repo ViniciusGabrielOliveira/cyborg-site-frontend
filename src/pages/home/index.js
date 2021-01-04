@@ -91,6 +91,29 @@ export default function HomeSite(){
 
             setLoading(false);
         }
+
+        
+
+        if(outView === 2) {
+            setLoading(true);
+            while(page != null){
+                
+                const novapagina = page + 1;
+                setPage(novapagina);
+    
+                api.get(url, {
+                    headers: {
+                        Authorization: token,
+                    }
+                }).then(response => {
+                    const novosMunicipes = [...municipes]
+                    novosMunicipes.push(...response.data.results)
+                    setMunicipes(novosMunicipes);
+                    setTotal(response.data.count);            
+                })
+            }
+            setLoading(false);
+        }
         
 
     }, [scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
@@ -123,38 +146,7 @@ export default function HomeSite(){
 
     })
 
-    async function teste(){
-        
-        
-        let nomes = searchValue.split(' ')
-        let nome1 = nomes[0] ? nomes[0] : '';
-        let nome2 = nomes[1] ? nomes[1] : '';
-        let nome3 = nomes[2] ? nomes[2] : '';
-        let nome4 = nomes[3] ? nomes[3] : '';
-        let mes = mesNascimento;
-        let url = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue
-        let municipesPrint = []
-
-
-        do {
-
-            await api.get(url, {
-                headers: {
-                    Authorization: token,
-                }
-            }).then(response => {                
-                municipesPrint.push(...response.data.results)                
-                url = response.data.next           
-            })
-
-            
-            
-        } while (url != null);
-
-        console.log(municipesPrint.length)
-
-
-    }
+    
     
 
     if (outView === 1) 
