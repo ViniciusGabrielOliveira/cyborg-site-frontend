@@ -216,7 +216,7 @@ export default function DetailTarefa(){
         
         <div className="home-container">
             <button onClick={async()=> {
-                await cadastrarJson()
+                await cadastrarJson();
                 console.log("ACABOU!")
             }}>cadastrar json</button> 
         </div>
