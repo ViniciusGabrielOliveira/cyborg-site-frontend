@@ -150,7 +150,11 @@ export default function HomeSite(){
     
     if (loading === true)
         return(
-            <h1>LOADING...</h1>
+            <>
+                <h1>LOADING...</h1>
+                <div ref={scrollObserver}></div>
+            </>
+
         )
 
     if (outView === 1 && loading === false) 
