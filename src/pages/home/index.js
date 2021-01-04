@@ -98,20 +98,30 @@ export default function HomeSite(){
             console.log("outView2")
             let page2 = page
             let url3 = 'gestao/municipes/?nome1='+nome1+'&nome2='+nome2+'&nome3='+nome3+'&nome4='+nome4+'&obs='+searchObsValue+'&mesNascimento='+mes+'&bairro='+bairroValue+'&fone='+foneValue+'&sexo='+sexoValue+'&cidade='+cidade+'&classificacao1='+classificacao1Value+'&classificacao2='+classificacao2Value+'&classificacao3='+classificacao3Value+'&profissao='+profissaoValue+'&page='+page2
+            console.log(url3)
 
-            while(url3 != null){
+            let url4
+            let cont = 0
+
+            while(url4 != null){
                 
-                let url4
-                url4 = url3
+                
+                if(cont === 0){
+                    url4 = url3
+                }
+                
+                
                 console.log(url4)
+                console.log(cont)
                 api.get(url4, {
                     headers: {
                         Authorization: token,
                     }
                 }).then(response => {
-                    const novosMunicipes = [...municipes]
-                    novosMunicipes.push(...response.data.results)
-                    url3 = response.data.next                    
+                    const novosMunicipes = [...municipes];
+                    novosMunicipes.push(...response.data.results);
+                    url4 = response.data.next;
+                    cont += 1;                    
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
