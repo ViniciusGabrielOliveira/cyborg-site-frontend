@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useHistory} from 'react-router-dom';
-import utf8 from 'utf8';
+// import utf8 from 'utf8';
 
 import api from '../../services/api';
 import Moment from 'moment';
@@ -181,7 +181,7 @@ export default function DetailTarefa(){
             if (e.BAIRRO) {data['bairro']=e.BAIRRO}
             if (e.CIDADE) {data['cidade']=e.CIDADE}
             if (e.UF) {data['estado']=e.UF}
-            if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO)}
+            if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO).format()}
             data['obs']='codigo antigo: '+e.IDENTIFICADOR+' '+(e.OBS)+' - '+(e.OBS1)+' - '+e.FONE+' - '+e.CELULAR
             data['idantigo']=e.IDENTIFICADOR
             if (e.CEP) {data['cep']=parseInt(e.CEP)}
