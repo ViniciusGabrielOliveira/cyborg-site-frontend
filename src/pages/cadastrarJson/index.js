@@ -165,26 +165,26 @@ export default function DetailTarefa(){
             if(e.IDENTIFICADOR
                  === "") return;
 
-            data['nome']= utf8.decode(e.NOME);
+            data['nome']= (e.NOME);
             data['sexo']= e.SEXO;
             data['cadastradoPor']= 'gabinete';
 
             if (e.QUEM) {data['indicado_por']=e.QUEM}
-            if (e.LOGRADOURO) {data['logradouro']=utf8.decode(e.LOGRADOURO)}
+            if (e.LOGRADOURO) {data['logradouro']=(e.LOGRADOURO)}
             if (e.NUMERO) {data['numero']=e.NUMERO}
             if (e.COMPLEMENTO) {data['complemento']=e.COMPLEMENTO}
             if (e.BAIRRO) {data['bairro']=e.BAIRRO}
             if (e.CIDADE) {data['cidade']=e.CIDADE}
             if (e.UF) {data['estado']=e.UF}
             if (e.DATA_ANIVERSARIO) {data['nascimento']=Moment(e.DATA_ANIVERSARIO.substring(3,6)+e.dataaniversario.substring(0,3)+e.dataaniversario.substring(6,10)).format()}
-            data['obs']='codigo antigo: '+e.IDENTIFICADOR+' '+utf8.decode(e.OBS)+' - '+utf8.decode(e.OBS1)+' - '+e.FONE+' - '+e.CELULAR
+            data['obs']='codigo antigo: '+e.IDENTIFICADOR+' '+(e.OBS)+' - '+(e.OBS1)+' - '+e.FONE+' - '+e.CELULAR
             data['idantigo']=e.IDENTIFICADOR
             if (e.CEP) {data['cep']=parseInt(e.CEP.replace(/\D/g, ''))}
 
             
             
-            if (utf8.decode(e.ORIGEM)) {data['origem']=utf8.decode(e.ORIGEM)};
-            if (utf8.decode(e.CPF)) {data['cpf']=utf8.decode(e.CPF)};
+            if ((e.ORIGEM)) {data['origem']=(e.ORIGEM)};
+            if ((e.CPF)) {data['cpf']=(e.CPF)};
             if (e.PROFISSAO) {data['profissao']=e.PROFISSAO};
             if (e.ZONA>0) {data['zona']=parseInt(e.ZONA.replace(/\D/g, ''))};
             if (e.SECAO>0) {data['secao']=parseInt(e.SECAO.replace(/\D/g, ''))};
