@@ -95,9 +95,9 @@ export default function HomeSite(){
         
 
         if(outView === 2) {
-            setLoading(true);
+            
             while(page != null){
-                
+                setLoading(true);
                 const novapagina = page + 1;
                 setPage(novapagina);
     
@@ -111,8 +111,9 @@ export default function HomeSite(){
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
+                setLoading(false);
             }
-            setLoading(false);
+            
         }
         
 
