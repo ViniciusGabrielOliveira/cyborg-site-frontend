@@ -435,7 +435,7 @@ export default function HomeSite(){
                     ))}
                     
                 </ul>
-                <div ref={scrollObserver, window.print()}></div>
+                <div ref={scrollObserver}></div>
             </Etiquetas>
         );
 }
