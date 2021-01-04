@@ -97,7 +97,7 @@ export default function HomeSite(){
         if(outView === 2) {
             
             while(page != null){
-                setLoading(true);
+                
                 const novapagina = page + 1;
                 setPage(novapagina);
     
@@ -111,7 +111,7 @@ export default function HomeSite(){
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
-                setLoading(false);
+                
             }
             
         }
@@ -160,8 +160,9 @@ export default function HomeSite(){
                         <FaPrint className="icon" size={20} color="#fff" onClick={() => window.print()}/>
                         <FaFilePdf className="icon" size={20} color="#fff" />
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
+                            setLoading(true);
                             await setOutView(2);
-                            
+                            setLoading(false);
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
                         
