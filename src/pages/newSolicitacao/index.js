@@ -239,7 +239,7 @@ export default function NewSolicitacao(){
             <section>
                 <h1>Nova Solicitação</h1>
 
-                <Link className="back-link" to={null}>
+                <Link className="back-link" to={()=> history.goBack()}>
                     <FiArrowLeft size={16} color="gray" />
                     Voltar
                 </Link>
