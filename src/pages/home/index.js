@@ -111,8 +111,9 @@ export default function HomeSite(){
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
-                
+                console.log(page)
             }
+            setLoading(false)
             
         }
         
@@ -169,7 +170,7 @@ export default function HomeSite(){
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
                             setLoading(true);
                             await setOutView(2);
-                            setLoading(false);
+                            
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
                         
@@ -435,7 +436,7 @@ export default function HomeSite(){
                     ))}
                     
                 </ul>
-                <div ref={scrollObserver}></div>
+                <div ref={scrollObserver, window.print()}></div>
             </Etiquetas>
         );
 }
