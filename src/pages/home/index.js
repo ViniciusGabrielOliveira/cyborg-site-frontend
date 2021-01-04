@@ -97,7 +97,7 @@ export default function HomeSite(){
         if(outView === 2) {
             
             while(page != null){
-                setLoading(true);
+                
                 const novapagina = page + 1;
                 setPage(novapagina);
     
@@ -111,7 +111,7 @@ export default function HomeSite(){
                     setMunicipes(novosMunicipes);
                     setTotal(response.data.count);            
                 })
-                setLoading(false);
+                
             }
             
         }
@@ -148,9 +148,12 @@ export default function HomeSite(){
     })
 
     
-    
+    if (loading === true)
+        return(
+            <h1>LOADING...</h1>
+        )
 
-    if (outView === 1) 
+    if (outView === 1 && loading === false) 
         return (
             <div className="home-container">
             
@@ -160,8 +163,9 @@ export default function HomeSite(){
                         <FaPrint className="icon" size={20} color="#fff" onClick={() => window.print()}/>
                         <FaFilePdf className="icon" size={20} color="#fff" />
                         <FaTag className="icon" size={20} color="#fff" onClick={async() => {
+                            setLoading(true);
                             await setOutView(2);
-                            window.print()
+                            setLoading(false);
                         }} />
                         <FaPowerOff className="icon" size={20} color="#fff" onClick={()=> handleLogOut()}/>
                         
@@ -427,7 +431,7 @@ export default function HomeSite(){
                     ))}
                     
                 </ul>
-                <div ref={scrollObserver}></div>
+                <div ref={scrollObserver, window.print()}></div>
             </Etiquetas>
         );
 }
