@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory} from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams, Link} from 'react-router-dom';
 import { FaEnvelopeSquare, FaPhoneSquare, FaArrowLeft, FaPrint, FaFilePdf, FaEye, FaPlusCircle } from 'react-icons/fa';
 import AvatarAlt from '../../assets/avatar.jpg';
 
