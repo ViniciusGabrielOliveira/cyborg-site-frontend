@@ -57,7 +57,7 @@ export default function DetailSolicitacao(){
         
         
 
-    }, [ history, params, solicitacao, demanda ])
+    }, [ history, params ])
 
     
 
