@@ -152,10 +152,10 @@ export default function DetailSolicitacao(){
                             </div>
                             
                             <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
-                            
+                            <p>{demanda.descricao}</p>
                         </div>}
 
-                        {solicitacao.tarefas && <ul>
+                        {solicitacao && <ul>
                             {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
                                 <li key={e2.id} >
                                     <div className='acaoContainer'>
