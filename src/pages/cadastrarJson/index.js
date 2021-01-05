@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import { useHistory} from 'react-router-dom';
 // import utf8 from 'utf8';
 
@@ -18,10 +18,7 @@ export default function DetailTarefa(){
 
     const [contador, setContador] = useState(0);
 
-    useEffect(()=> {
-        setContador(contador)
-    }, [contador])
-
+    
     // const token = 'JWT ' + localStorage.getItem('token');
     // const history = useHistory();
 
@@ -153,6 +150,8 @@ export default function DetailTarefa(){
                 ))
             }
         })
+
+        setContador(contador + 1);
     }
 
     // async function GetClass(e){
@@ -214,7 +213,7 @@ export default function DetailTarefa(){
             await postMunicipe(data,fones);
 
             
-            setContador(contador + 1);
+            
 
             
         })
