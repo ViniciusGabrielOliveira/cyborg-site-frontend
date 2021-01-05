@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FaSearch } from "react-icons/fa";
 
 
@@ -72,15 +72,15 @@ export default function Noticias(){
                 {noticias.map(noticia => (
                     <li key={noticia.url}>
                         {noticia.text.length<300 ?
-                            <div className='link-noticia' onClick={()=> history.push(`/noticias/${TreatTitle(noticia.title)}`)} >
+                            <button className='link-noticia' onClick={()=> history.push(`/noticias/${TreatTitle(noticia.title)}`)} >
                                 <div>  
                                     {noticia.image.length > 5 ? <img className='img-card' src={noticia.image} alt="...carregando imagem..." /> : <img className='img-card' src={ImgAlt} alt="...carregando imagem..." />}
                                 </div>
                                 <h1>{noticia.title}</h1>
                                 <p>{StyleCyborg(noticia.text)}</p>
-                            </div>
+                            </button>
                         :
-                            <div className='link-noticia' onClick={()=> history.push(`/noticias/${TreatTitle(noticia.title)}`)}>
+                            <button className='link-noticia' onClick={()=> history.push(`/noticias/${TreatTitle(noticia.title)}`)}>
                                 <div>  
                                     {noticia.image.length > 5 ? <img className='img-card' src={noticia.image} alt="...carregando imagem..." /> : <img className='img-card' src={ImgAlt} alt="...carregando imagem..." />}
                                 </div>
@@ -88,7 +88,7 @@ export default function Noticias(){
                                 <p>{StyleCyborg(noticia.text.substr(0,250))}...
                                     <a className='leia-mais'>Leia mais</a>
                                 </p>
-                            </div>
+                            </button>
                         }    
                     </li>
                 ))}                    
