@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
+
 import api from '../../services/api';
+import apiCep from '../../services/apiCep';
 
 import './styles.css'
 
@@ -21,7 +22,20 @@ export default function EditDemanda(){
 
     const history = useHistory();
     const params = useParams();
-    const [demanda, setDemanda] = useState([])
+    const [demanda, setDemanda] = useState([]);
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [numero, setNumero] = useState('');
+    const [prioridade, setPrioridade] = useState('');
+    const [secretaria, setSecretaria] = useState('');
+    const [status, setStatus] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [url_fotos, setUrl_fotos] = useState('');
+    const [searchCep, setSearchCep] = useState(false)
+    const [searchRuas, setSearchRuas] = useState([])
     
     
     useEffect(() =>{
@@ -45,7 +59,26 @@ export default function EditDemanda(){
     }, [ history, params ])
 
     
-     
+    useEffect(() =>{
+
+        const urlRua = logradouro.length>3 ? 'SP/Sao Jose dos Campos/' + logradouro + '/json/' : ''
+        
+        if (urlRua.length>3) {
+
+            apiCep.get(urlRua).then(response => {
+                if (response.data.erro === true){
+                    alert('rua não encontrada')
+                }else {
+                setSearchRuas(response.data);
+                }                
+            }, error => {
+                if (error.response === 400){
+                    alert('rua não encontrada')
+                }
+            })
+        }
+
+    }, [logradouro])
  
     function handleSubmit(e){
         // e.preventDefault();
@@ -112,25 +145,118 @@ export default function EditDemanda(){
                 </div>
             </section>
 
-            <hr/>
-            
-
-            {console.log(demanda)}
-
             {demanda &&
                 <form onSubmit={handleSubmit}>
-                    <p>Nome</p>                    
-                    <input 
-                        placeholder="Nome Completo"
-                        value={demanda.tipo}
-                        onChange={null} 
-                    />
-                    <hr/>
                     
+                    <hr/>
+                    <p>Tipo</p>                    
+                    <input
+                        value={tipo}
+                        onChange={e=> setTipo(e.target.value)} 
+                    />
+                    
+                    <hr/>
+                    <p>Descrição</p>                    
+                    <textarea
+                        value={descricao}
+                        onChange={e=> setDescricao(e.target.value)} 
+                    />
+                    
+                    <hr/>
+                    <p>Status</p>                        
+                    <select onChange={e=> setStatus(e.target.value)}>
+                        <option value={status}>
+                            {status}
+                        </option>
+                        <option value={'PENDENTE'}>
+                            PENDENTE
+                        </option>
+                        <option value={'CONCLUIDO'}>
+                            CONCLUÍDO
+                        </option>
+                    </select>
+                    
+                    <hr/>
+                    <p>Secretaria</p>                    
+                    <input
+                        value={secretaria}
+                        onChange={e=> setSecretaria(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>URL Fotos</p>                    
+                    <input
+                        value={url_fotos}
+                        onChange={e=> setUrl_fotos(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Prioridade</p>
+                    <input 
+                        placeholder="Prioridade"
+                        value={prioridade}
+                        onChange={e=> setPrioridade(e.target.value)} 
+                        type = 'number'
+                    />
+
+                    <hr/>                    
+                    <p>Rua</p>
+                    <div className= 'fone'>
+                        <input 
+                            placeholder="Procurar Rua"
+                            value={logradouro}
+                            onChange={e=> setLogradouro(e.target.value)} 
+                        />
+                        <button type="button" className="mais" onClick={() => (setSearchCep(!searchCep))}>
+                            <FaSearch  size={20} color="#a9a9a9" /> 
+                        </button>
+                    </div>
+                    {searchCep && 
+                        <div>
+                            {searchRuas.map((rua, index) => (
+                                <Link className= 'fones' key={index}  
+                                    onClick={() => {
+                                        setCep(rua.cep); 
+                                        setSearchCep(!searchCep);
+                                        setBairro(rua.bairro);
+                                        setCidade(rua.cidade)
+                                        setLogradouro(rua.logradouro)}}>
+                                    <div>{rua.logradouro} - </div>
+                                    <div>{rua.bairro}</div>
+                                </Link>
+                            ))}             
+                        </div>
+                    }
+                    
+                    <hr/>
+                    <p>Numero</p>                    
+                    <input
+                        value={numero}
+                        onChange={e=> setNumero(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Complemento</p>                    
+                    <input
+                        value={complemento}
+                        onChange={e=> setComplemento(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Bairro</p>                    
+                    <input
+                        value={bairro}
+                        onChange={e=> setBairro(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Cidade</p>                    
+                    <input
+                        value={cidade}
+                        onChange={e=> setCidade(e.target.value)} 
+                    />
 
                     <button className="button" type ='submit'>Cadastrar</button>
-
-
                 </form>
             }
         </div>
