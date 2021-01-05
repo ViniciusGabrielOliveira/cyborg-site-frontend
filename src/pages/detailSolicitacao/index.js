@@ -55,9 +55,7 @@ export default function DetailSolicitacao(){
             }
         })
         
-        console.log(solicitacao);
-        console.log(municipe);
-        console.log(demanda);
+        
 
     }, [ history, params ])
 
@@ -67,6 +65,7 @@ export default function DetailSolicitacao(){
     return(
         
         <div className="home-container">
+            {console.log(solicitacao), console.log(municipe), console.log(demanda)}
             <div className="options-container">
                 <div>
                     <FaArrowLeft size={20} color="#fff" opacity="0.5" onClick={()=> history.goBack()} />                   
