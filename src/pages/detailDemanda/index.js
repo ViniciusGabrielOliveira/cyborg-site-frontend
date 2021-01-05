@@ -37,27 +37,7 @@ export default function DetailSolicitacao(){
 
     }, [ history, params ])
 
-    function getMunicipe(id){
-        let urlMunicipe = 'gestao/municipe/'+id+'/'
-        let token = 'JWT ' + localStorage.getItem('token');
-        let nome = ''
-        api.get(urlMunicipe, {
-            headers: {
-                Authorization: token,
-            }
-        }).then(response => {
-            nome = response.data.nome;
-        }, error => {
-            if (error.response.status === 401){
-                history.push('/logon');
-            }
-        })
-
-        return nome;
-
-    }
-
-    
+     
 
     
     return(
@@ -70,6 +50,7 @@ export default function DetailSolicitacao(){
                 <div>
                     <FaPrint className="icon" size={20} color="#fff" />
                     <FaFilePdf className="icon" size={20} color="#fff" />
+                    <FaEdit className="icon" size={20} color="#fff" onClick={() => history.push('/editdemanda/'+params.id)}/>
                 </div>   
             </div>
             <div className='card'>

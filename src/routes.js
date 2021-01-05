@@ -23,6 +23,7 @@ import Home from './pages/home';
 import DetailSolicitacao from './pages/detailSolicitacao';
 import DetailTarefa from './pages/detailTarefa';
 import DetailDemanda from './pages/detailDemanda';
+import EditDemanda from './pages/editDemanda';
 import Tarefas from './pages/tarefas';
 import Demandas from './pages/demandas';
 import CadastroJson from './pages/cadastrarJson';
@@ -47,6 +48,7 @@ export default function Routes() {
                 <Route path="/solicitacao/:id" component={DetailSolicitacao} />
                 <Route path="/demandas" component={Demandas} />
                 <Route path="/demanda/:id" component={DetailDemanda} />
+                <Route path="/editdemanda/:id" component={EditDemanda} />
                 <Route path="/tarefa/new" component={NewTarefa} />
                 <Route path="/tarefa/:id" component={DetailTarefa} />
                 <Route path="/edittarefa/:id" component={EditTarefa} />
