@@ -36,7 +36,6 @@ export default function EditTarefa(){
     let optionsStatus = ['PENDENTE', 'ANDAMENTO', 'CONCLUIDO']
 
     const params = useParams();
-    const [tarefa, setTarefa] = useState([]);
 
     useEffect(() =>{
         let token = 'JWT ' + localStorage.getItem('token');

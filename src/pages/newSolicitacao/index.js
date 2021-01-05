@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { FaSearch, FaPlusCircle, FaWindowClose } from 'react-icons/fa';
 import api from '../../services/api';
