@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -215,8 +215,7 @@ export default function EditDemanda(){
                         <div>
                             {searchRuas.map((rua, index) => (
                                 <Link className= 'fones' key={index}  
-                                    onClick={() => {
-                                        setCep(rua.cep); 
+                                    onClick={() => { 
                                         setSearchCep(!searchCep);
                                         setBairro(rua.bairro);
                                         setCidade(rua.cidade)
