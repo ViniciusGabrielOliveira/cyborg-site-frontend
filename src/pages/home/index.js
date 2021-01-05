@@ -165,7 +165,7 @@ export default function HomeSite(){
             <div className="home-container">
             
                 <div className="options-container">
-                    <h1>Municipes</h1>
+                    <h1>{total} - Municipes</h1>
                     <div>
                         <FaPrint className="icon" size={20} color="#fff" onClick={() => window.print()}/>
                         <FaFilePdf className="icon" size={20} color="#fff" />
