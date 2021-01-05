@@ -170,8 +170,8 @@ export default function DetailSolicitacao(){
                             
                             <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
                             <p>{demanda.descricao}</p>
-                        </div>
-                        &&
+                        </div>}
+                        
                         <ul>                            
                             {demanda.tarefas && demanda.tarefas.map(e3 => (
                                 <li key={e3.id} >
@@ -192,7 +192,7 @@ export default function DetailSolicitacao(){
                                     {e3.observacao && <div className='acaoObservacao'>{e3.observacao}</div>}                                   
                                 </li>
                             ))}
-                        </ul>}                                               
+                        </ul>                                             
                     </div>                    
                 </div>                                                                    
             </div>           
