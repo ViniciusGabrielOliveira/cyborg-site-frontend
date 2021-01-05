@@ -123,7 +123,7 @@ export default function EditDemanda(){
                     <input 
                         placeholder="Nome Completo"
                         value={demanda.tipo}
-                        onChange={e=> setNome(e.target.value)} 
+                        onChange={null} 
                     />
                     <hr/>
                     
