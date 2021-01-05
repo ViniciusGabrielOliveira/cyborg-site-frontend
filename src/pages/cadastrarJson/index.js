@@ -151,7 +151,7 @@ export default function DetailTarefa(){
             }
         })
 
-        setContador(contador + 1);
+        
     }
 
     // async function GetClass(e){
@@ -168,11 +168,13 @@ export default function DetailTarefa(){
 
     async function cadastrarJson(){
         
-        
+        let x = 0
 
         json.map( async e => { 
 
-            
+            x = x + 1;
+
+            setContador(x);            
 
             let data = {};
             let fones = [];
@@ -208,7 +210,6 @@ export default function DetailTarefa(){
             if (e.ESCOLA) {data['escola']=e.ESCOLA};
 
             fones = TreatFones(e.FONE+'+'+e.CELULAR);
-
 
             await postMunicipe(data,fones);
 
