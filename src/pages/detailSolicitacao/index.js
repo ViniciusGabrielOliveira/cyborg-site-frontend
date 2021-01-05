@@ -31,9 +31,8 @@ export default function DetailSolicitacao(){
             headers: {
                 Authorization: token,
             }
-        }).then(response => {
-            console.log(response);
-            setSolicitacao(response.data.results);
+        }).then(response => {            
+            setSolicitacao(response.data);            
             api.get(url + response.data.municipe, {
                 headers: {
                     Authorization: token,
@@ -77,10 +76,7 @@ export default function DetailSolicitacao(){
             <div className='card'>
                 <div className='avatar1-container'>
                     {municipe.avatar_url && municipe.avatar_url.length > 5 ? <img className='imgDetail-avatar' src={municipe.avatar_url} alt="...carregando imagem..." /> : <img className='img-avatar' src={AvatarAlt} alt="...carregando imagem..." />}                                 
-                </div> 
-
-                
-
+                </div>
                 <div>
                     <h1>{municipe.nome}</h1>
                     <div className='obs'>
@@ -88,9 +84,6 @@ export default function DetailSolicitacao(){
                     </div>
                     
                 </div>
-
-                 
-
                 <div> 
                     <p><strong>End: </strong>{municipe.logradouro}, {municipe.numero}{municipe.complemento && <span> / {municipe.complemento}</span>} - {municipe.bairro}</p>
                     
@@ -113,7 +106,7 @@ export default function DetailSolicitacao(){
                     
                     
                     <div className='solicitacoesContainer'>
-                        
+                        <p>Solicitação</p>
 
                         {solicitacao &&
                             <div className='solicitHeader'>                            
