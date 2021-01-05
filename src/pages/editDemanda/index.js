@@ -47,7 +47,17 @@ export default function EditDemanda(){
                 Authorization: token,
             }
         }).then(response => {
-            setDemanda(response.data);
+            setBairro(response.data.bairro);
+            setCidade(response.data.cidade);
+            setComplemento(response.data.complemento);
+            setDescricao(response.data.descricao);
+            setLogradouro(response.data.logradouro);
+            setNumero(response.data.numero);
+            setPrioridade(response.data.prioridade);
+            setSecretaria(response.data.secretaria);
+            setStatus(response.data.status);
+            setTipo(response.data.tipo);
+            setUrl_fotos(response.data.url_fotos);            
         }, error => {
             if (error.response.status === 401){
                 history.push('/logon');
