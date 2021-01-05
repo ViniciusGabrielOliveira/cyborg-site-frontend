@@ -311,8 +311,14 @@ export default function EditMunicipe(){
                     {searchCep && 
                         <div>
                             {searchRuas.map((rua, index) => (
-                                <Link className= 'fones' key={index}  onClick={() => {setCep(rua.cep); setSearchCep(!searchCep)}} mou>
-                                    <div>{rua.logradouro}</div>
+                                <Link className= 'fones' key={index}  
+                                    onClick={() => {
+                                        setCep(rua.cep); 
+                                        setSearchCep(!searchCep);
+                                        setBairro(rua.bairro);
+                                        setCidade(rua.cidade)
+                                        setLogradouro(rua.logradouro)}}>
+                                    <div>{rua.logradouro} - </div>
                                     <div>{rua.bairro}</div>
                                 </Link>
                             ))}             
