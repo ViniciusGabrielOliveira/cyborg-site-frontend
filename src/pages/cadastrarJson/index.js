@@ -178,7 +178,7 @@ export default function DetailTarefa(){
                  === "") return;
 
             data['nome']= (e.NOME);
-            data['sexo']= e.SEXO;
+            e.SEXO ? data['sexo']= e.SEXO : data['sexo'] = 'M';
             data['cadastradoPor']= 'gabinete';
 
             if (e.QUEM) {data['indicado_por']=e.QUEM}
