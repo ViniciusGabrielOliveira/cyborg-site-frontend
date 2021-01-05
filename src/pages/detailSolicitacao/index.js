@@ -134,7 +134,7 @@ export default function DetailSolicitacao(){
                         }
                           
                         <hr/>
-                        <div className='demanda-container'>
+                        {demanda && <div className='demanda-container'>
                             <div className='solicitHeader'>                            
                                 <h3>{demanda.tipo}</h3>
                                 <div className='containerButtons'>
@@ -153,7 +153,7 @@ export default function DetailSolicitacao(){
                             
                             <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
                             <p>{demanda.descricao}</p>
-                        </div>
+                        </div>}
 
                         {solicitacao.tarefas && <ul>
                             {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
