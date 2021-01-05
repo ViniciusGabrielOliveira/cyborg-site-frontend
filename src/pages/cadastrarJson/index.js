@@ -172,9 +172,7 @@ export default function DetailTarefa(){
 
         json.map( async e => { 
 
-            x = x + 1;
-
-            setContador(x);            
+                        
 
             let data = {};
             let fones = [];
@@ -213,7 +211,9 @@ export default function DetailTarefa(){
 
             await postMunicipe(data,fones);
 
-            
+            x = x + 1;
+
+            setContador(x);
             
 
             
