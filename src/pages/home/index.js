@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {useHistory} from 'react-router-dom';
 import { FaHome, FaUserPlus, FaCheckSquare, FaList, FaSearch, FaFilter, FaPrint, FaFilePdf, FaTag, FaListAlt, FaPowerOff, FaArrowLeft } from 'react-icons/fa';
 
@@ -97,7 +97,7 @@ export default function HomeSite(){
 
                 
 
-    }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
+    }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue, loading, municipes, page, total])
 
     useEffect(()=> {
         
@@ -120,7 +120,7 @@ export default function HomeSite(){
         }
         setLoading(false)
         
-    }, [outView, cont])
+    }, [outView, cont, municipes, token, url2])
     
     function zerar(){
         setTotal(0);

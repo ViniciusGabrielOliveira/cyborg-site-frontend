@@ -145,15 +145,7 @@ export default function EditMunicipe(){
 
     }, [cep, logradouro, history])
 
-    function deleteFone(e){
-        api.delete('gestao/fones/'+e+'/', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('token')}`
-            }
-        })
-    }
-
+    
     function deleteFone(e){
         api.delete('gestao/fones/'+e+'/', {
             headers: {
