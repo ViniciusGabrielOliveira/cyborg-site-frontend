@@ -40,7 +40,7 @@ export default function EditDemanda(){
             }
         })   
         
-        console.log(demanda)
+        
 
     }, [ history, params ])
 
@@ -115,7 +115,7 @@ export default function EditDemanda(){
             <hr/>
             
 
-
+            {console.log(demanda)}
 
             {demanda &&
                 <form onSubmit={handleSubmit}>
