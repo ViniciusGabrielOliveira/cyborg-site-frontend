@@ -57,15 +57,14 @@ export default function DetailSolicitacao(){
         
         
 
-    }, [ history, params ])
+    }, [ history, params, solicitacao, demanda ])
 
     
 
     
     return(
         
-        <div className="home-container">
-            {console.log(solicitacao), console.log(municipe), console.log(demanda)}
+        <div className="home-container">            
             <div className="options-container">
                 <div>
                     <FaArrowLeft size={20} color="#fff" opacity="0.5" onClick={()=> history.goBack()} />                   
@@ -105,7 +104,19 @@ export default function DetailSolicitacao(){
                             </li>
                         ))}
                     </ul>
-                    
+                    <div className='solicitacoesContainer'>
+                        {demanda && <div className='demanda-container'>
+                            <div className='solicitHeader'>                            
+                                <h3>{demanda.tipo}</h3>
+                                <div className='containerButtons'>
+                                    <div className='solicitaStatus' />                                    
+                                </div>   
+                            </div>
+                            
+                            <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
+                            <p>{demanda.descricao}</p>
+                        </div>}
+                    </div>
                     
                     <div className='solicitacoesContainer'>
 
@@ -123,37 +134,36 @@ export default function DetailSolicitacao(){
                                         }} className='solicitaAdd'>
                                         <FaPlusCircle size={15} /> 
                                     </button>
-                                </div>
-                                <ul>
-                                    {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
-                                        <li key={e2.id} >
-                                            <div className='acaoContainer'>
-                                                <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
-                                                <div className='acaoTipo'><p>{e2.tipo}</p></div>
-                                                <div className='containerButtons'>
-                                                    <div className='acaoStatus' />
-                                                    <button className='acaoView' type="button" 
-                                                        onClick={()=> {
-                                                            history.push('/tarefa/'+ e2.id)
-                                                        }}>
-                                                        <FaEye size={15}/> 
-                                                    </button>
-                                                    
-                                                </div>
+                                </div>                                   
+                            </div>}
+                            <ul>
+                                {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
+                                    <li key={e2.id} >
+                                        <div className='acaoContainer'>
+                                            <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
+                                            <div className='acaoTipo'><p>{e2.tipo}</p></div>
+                                            <div className='containerButtons'>
+                                                <div className='acaoStatus' />
+                                                <button className='acaoView' type="button" 
+                                                    onClick={()=> {
+                                                        history.push('/tarefa/'+ e2.id)
+                                                    }}>
+                                                    <FaEye size={15}/> 
+                                                </button>
+                                                
                                             </div>
-                                            {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
-                                            {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
-                                            
-                                        </li>
-                                    ))}
-                                </ul>   
-                            </div>
-                        }
+                                        </div>
+                                        {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
+                                        {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
+                                        
+                                    </li>
+                                ))}
+                            </ul>
                           
                         <hr/>
                         {demanda && <div className='demanda-container'>
                             <div className='solicitHeader'>                            
-                                <h3>{demanda.tipo}</h3>
+                                <h3>Tarefas da Demanda</h3>
                                 <div className='containerButtons'>
                                     <div className='solicitaStatus' />
                                     <button type="button" 
@@ -167,9 +177,6 @@ export default function DetailSolicitacao(){
                                     </button>
                                 </div>   
                             </div>
-                            
-                            <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
-                            <p>{demanda.descricao}</p>
                         </div>}
                         
                         <ul>                            
