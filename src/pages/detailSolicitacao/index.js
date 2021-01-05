@@ -121,9 +121,30 @@ export default function DetailSolicitacao(){
                                             localStorage.setItem('solicitacaoId', solicitacao.id)
                                             localStorage.setItem('demandaId', 0)
                                         }} className='solicitaAdd'>
-                                        <FaPlusCircle size={15} /> 
+                                        <Link>add tarefa</Link>
                                     </button>
-                                </div>   
+                                </div>
+                                {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
+                                <li key={e2.id} >
+                                    <div className='acaoContainer'>
+                                        <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
+                                        <div className='acaoTipo'><p>{e2.tipo}</p></div>
+                                        <div className='containerButtons'>
+                                            <div className='acaoStatus' />
+                                            <button className='acaoView' type="button" 
+                                                onClick={()=> {
+                                                    history.push('/tarefa/'+ e2.id)
+                                                }}>
+                                                <FaEye size={15}/> 
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+                                    {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
+                                    {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
+                                    
+                                </li>
+                            ))}  
                             </div>
                         }
                           
@@ -149,28 +170,7 @@ export default function DetailSolicitacao(){
                             <p>{demanda.descricao}</p>
                         </div>}
 
-                        {solicitacao && <ul>
-                            {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
-                                <li key={e2.id} >
-                                    <div className='acaoContainer'>
-                                        <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
-                                        <div className='acaoTipo'><p>{e2.tipo}</p></div>
-                                        <div className='containerButtons'>
-                                            <div className='acaoStatus' />
-                                            <button className='acaoView' type="button" 
-                                                onClick={()=> {
-                                                    history.push('/tarefa/'+ e2.id)
-                                                }}>
-                                                <FaEye size={15}/> 
-                                            </button>
-                                            
-                                        </div>
-                                    </div>
-                                    {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
-                                    {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
-                                    
-                                </li>
-                            ))}
+                        {demanda && <ul>                            
                             {demanda.tarefas && demanda.tarefas.map(e3 => (
                                 <li key={e3.id} >
                                     <div className='acaoContainer'>
