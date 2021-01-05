@@ -97,7 +97,7 @@ export default function HomeSite(){
 
                 
 
-    }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue, loading, municipes, page, total])
+    }, [outView, scrollRadio, token, history, searchValue, bairroValue, cidade, classificacao1Value, classificacao2Value, classificacao3Value, foneValue, mesNascimento, searchObsValue, sexoValue, profissaoValue])
 
     useEffect(()=> {
         
@@ -120,7 +120,7 @@ export default function HomeSite(){
         }
         setLoading(false)
         
-    }, [outView, cont, municipes, token, url2])
+    }, [outView, cont])
     
     function zerar(){
         setTotal(0);
