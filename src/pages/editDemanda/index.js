@@ -112,7 +112,7 @@ export default function EditDemanda(){
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }
-        })
+        }).then(response => {console.log(response)}, error=> {console.log(error)})
 
         history.goBack()
     }
