@@ -22,7 +22,6 @@ export default function EditDemanda(){
 
     const history = useHistory();
     const params = useParams();
-    const [demanda, setDemanda] = useState([]);
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -91,49 +90,31 @@ export default function EditDemanda(){
     }, [logradouro])
  
     function handleSubmit(e){
-        // e.preventDefault();
+        e.preventDefault();
 
+        let demanda = {}
         
-        // let prazo = Moment(prazo_entrega).format()
-        
-
-        // if(Moment(prazo).format('DD/MM/AAAA') < Moment().format('DD/MM/AAAA')) {
-        //     alert('Prazo de entrega inválido!');
-        //     return
-        // }
-
-        // if(!tipo){
-        //     alert('Tipo é um campo obrigatório!')
-        //     return
-        // }
-
-        
-
-        // let tarefa = {
-                        
-        //     "prazo_entrega": prazo, //requerido!
-        //     "usuario": localStorage.getItem('id'),
-        //     "tipo": tipo
-        // }
+        if(tipo) demanda["tipo"] = tipo;
+        if(descricao) demanda["descricao"] = descricao;
+        if(status) demanda["status"] = status;
+        if(secretaria) demanda["secretaria"] = secretaria;
+        if(url_fotos) demanda["url_fotos"] = url_fotos;
+        if(prioridade) demanda["prioridade"] = prioridade;
+        if(logradouro) demanda["logradouro"] = logradouro;
+        if(numero) demanda["numero"] = numero;
+        if(complemento) demanda["complemento"] = complemento;
+        if(bairro) demanda["bairro"] = bairro;
+        if(cidade) demanda["cidade"] = cidade;
         
         
-        // if(status==='CONCLUIDO') tarefa["data_conclusao"] = Moment().format();
-        // if(descricao) tarefa["descricao"] = descricao;
-        // if(secretaria) tarefa["secretaria"] = secretaria;
-        // status ? tarefa["status"] = status : tarefa["status"] = "PENDENTE";
-        // if(observacao) tarefa["observacao"] = observacao;
-        // if(prioridade) tarefa["prioridade"] = prioridade;
-        // if(solicitacaoId>0) tarefa["solicitacao"] = solicitacaoId;
-        // if(demandaId>0) tarefa["demanda"] = demandaId;
-        
-        // api.patch('gestao/tarefa/'+ params.id + '/', tarefa, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `JWT ${localStorage.getItem('token')}`
-        //     }
-        // })
+        api.patch('gestao/demanda/'+ params.id + '/', demanda, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }
+        })
 
-        // history.goBack()
+        history.goBack()
     }
 
     
@@ -155,119 +136,119 @@ export default function EditDemanda(){
                 </div>
             </section>
 
-            {demanda &&
-                <form onSubmit={handleSubmit}>
-                    
-                    <hr/>
-                    <p>Tipo</p>                    
-                    <input
-                        value={tipo}
-                        onChange={e=> setTipo(e.target.value)} 
-                    />
-                    
-                    <hr/>
-                    <p>Descrição</p>                    
-                    <textarea
-                        value={descricao}
-                        onChange={e=> setDescricao(e.target.value)} 
-                    />
-                    
-                    <hr/>
-                    <p>Status</p>                        
-                    <select onChange={e=> setStatus(e.target.value)}>
-                        <option value={status}>
-                            {status}
-                        </option>
-                        <option value={'PENDENTE'}>
-                            PENDENTE
-                        </option>
-                        <option value={'CONCLUIDO'}>
-                            CONCLUÍDO
-                        </option>
-                    </select>
-                    
-                    <hr/>
-                    <p>Secretaria</p>                    
-                    <input
-                        value={secretaria}
-                        onChange={e=> setSecretaria(e.target.value)} 
-                    />
+            
+            <form onSubmit={handleSubmit}>
+                
+                <hr/>
+                <p>Tipo</p>                    
+                <input
+                    value={tipo}
+                    onChange={e=> setTipo(e.target.value)} 
+                />
+                
+                <hr/>
+                <p>Descrição</p>                    
+                <textarea
+                    value={descricao}
+                    onChange={e=> setDescricao(e.target.value)} 
+                />
+                
+                <hr/>
+                <p>Status</p>                        
+                <select onChange={e=> setStatus(e.target.value)}>
+                    <option value={status}>
+                        {status}
+                    </option>
+                    <option value={'PENDENTE'}>
+                        PENDENTE
+                    </option>
+                    <option value={'CONCLUIDO'}>
+                        CONCLUÍDO
+                    </option>
+                </select>
+                
+                <hr/>
+                <p>Secretaria</p>                    
+                <input
+                    value={secretaria}
+                    onChange={e=> setSecretaria(e.target.value)} 
+                />
 
-                    <hr/>
-                    <p>URL Fotos</p>                    
-                    <input
-                        value={url_fotos}
-                        onChange={e=> setUrl_fotos(e.target.value)} 
-                    />
+                <hr/>
+                <p>URL Fotos</p>                    
+                <input
+                    value={url_fotos}
+                    onChange={e=> setUrl_fotos(e.target.value)} 
+                />
 
-                    <hr/>
-                    <p>Prioridade</p>
+                <hr/>
+                <p>Prioridade</p>
+                <input 
+                    placeholder="Prioridade"
+                    value={prioridade}
+                    onChange={e=> setPrioridade(e.target.value)} 
+                    type = 'number'
+                />
+
+                <hr/>                    
+                <p>Logradouro</p>
+                <div className= 'fone'>
                     <input 
-                        placeholder="Prioridade"
-                        value={prioridade}
-                        onChange={e=> setPrioridade(e.target.value)} 
-                        type = 'number'
+                        placeholder="Procurar Logradouro"
+                        value={logradouro}
+                        onChange={e=> setLogradouro(e.target.value)} 
                     />
-
-                    <hr/>                    
-                    <p>Rua</p>
-                    <div className= 'fone'>
-                        <input 
-                            placeholder="Procurar Rua"
-                            value={logradouro}
-                            onChange={e=> setLogradouro(e.target.value)} 
-                        />
-                        <button type="button" className="mais" onClick={() => (setSearchCep(!searchCep))}>
-                            <FaSearch  size={20} color="#a9a9a9" /> 
-                        </button>
+                    <button type="button" className="mais" onClick={() => (setSearchCep(!searchCep))}>
+                        <FaSearch  size={20} color="#a9a9a9" /> 
+                    </button>
+                </div>
+                {searchCep && 
+                    <div>
+                        {searchRuas.map((rua, index) => (
+                            <Link className= 'fones' key={index}  
+                                onClick={() => { 
+                                    setSearchCep(!searchCep);
+                                    setBairro(rua.bairro);
+                                    setCidade(rua.cidade)
+                                    setLogradouro(rua.logradouro)}}>
+                                <div>{rua.logradouro} - </div>
+                                <div>{rua.bairro}</div>
+                            </Link>
+                        ))}             
                     </div>
-                    {searchCep && 
-                        <div>
-                            {searchRuas.map((rua, index) => (
-                                <Link className= 'fones' key={index}  
-                                    onClick={() => { 
-                                        setSearchCep(!searchCep);
-                                        setBairro(rua.bairro);
-                                        setCidade(rua.cidade)
-                                        setLogradouro(rua.logradouro)}}>
-                                    <div>{rua.logradouro} - </div>
-                                    <div>{rua.bairro}</div>
-                                </Link>
-                            ))}             
-                        </div>
-                    }
-                    
-                    <hr/>
-                    <p>Numero</p>                    
-                    <input
-                        value={numero}
-                        onChange={e=> setNumero(e.target.value)} 
-                    />
+                }
+                
+                <hr/>
+                <p>Numero</p>                    
+                <input
+                    value={numero}
+                    onChange={e=> setNumero(e.target.value)} 
+                />
 
-                    <hr/>
-                    <p>Complemento</p>                    
-                    <input
-                        value={complemento}
-                        onChange={e=> setComplemento(e.target.value)} 
-                    />
+                <hr/>
+                <p>Complemento</p>                    
+                <input
+                    value={complemento}
+                    onChange={e=> setComplemento(e.target.value)} 
+                />
 
-                    <hr/>
-                    <p>Bairro</p>                    
-                    <input
-                        value={bairro}
-                        onChange={e=> setBairro(e.target.value)} 
-                    />
+                <hr/>
+                <p>Bairro</p>                    
+                <input
+                    value={bairro}
+                    onChange={e=> setBairro(e.target.value)} 
+                />
 
-                    <hr/>
-                    <p>Cidade</p>                    
-                    <input
-                        value={cidade}
-                        onChange={e=> setCidade(e.target.value)} 
-                    />
+                <hr/>
+                <p>Cidade</p>                    
+                <input
+                    value={cidade}
+                    onChange={e=> setCidade(e.target.value)} 
+                />
 
-                    <button className="button" type ='submit'>Cadastrar</button>
-                </form>
-            }
+                <button className="button" type ='submit'>Cadastrar</button>
+            </form>
+            
         </div>
     )
 };
