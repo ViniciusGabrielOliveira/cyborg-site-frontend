@@ -55,6 +55,9 @@ export default function DetailSolicitacao(){
             }
         })
         
+        console.log(solicitacao);
+        console.log(municipe);
+        console.log(demanda);
 
     }, [ history, params ])
 
@@ -106,7 +109,6 @@ export default function DetailSolicitacao(){
                     
                     
                     <div className='solicitacoesContainer'>
-                        <p>Solicitação</p>
 
                         {solicitacao &&
                             <div className='solicitHeader'>                            
