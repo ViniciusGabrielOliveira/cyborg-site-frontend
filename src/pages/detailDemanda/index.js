@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { FaArrowLeft, FaPrint, FaFilePdf, FaEye, FaPlusCircle, FaCamera } from 'react-icons/fa';
+import { FaEdit, FaArrowLeft, FaPrint, FaFilePdf, FaEye, FaPlusCircle, FaCamera } from 'react-icons/fa';
 
 import api from '../../services/api';
 import Moment from 'moment';
