@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useHistory} from 'react-router-dom';
 // import utf8 from 'utf8';
 
@@ -17,6 +17,10 @@ Moment.locale('pt-BR');
 export default function DetailTarefa(){
 
     const [contador, setContador] = useState(0);
+
+    useEffect(()=> {
+        setContador(contador)
+    }, [contador])
 
     // const token = 'JWT ' + localStorage.getItem('token');
     // const history = useHistory();
