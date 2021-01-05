@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams, Link} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FaEnvelopeSquare, FaPhoneSquare, FaArrowLeft, FaPrint, FaFilePdf, FaEye, FaPlusCircle } from 'react-icons/fa';
 import AvatarAlt from '../../assets/avatar.jpg';
 
@@ -120,30 +121,32 @@ export default function DetailSolicitacao(){
                                             localStorage.setItem('solicitacaoId', solicitacao.id)
                                             localStorage.setItem('demandaId', 0)
                                         }} className='solicitaAdd'>
-                                        <Link>add tarefa</Link>
+                                        <FaPlusCircle size={15} /> 
                                     </button>
                                 </div>
-                                {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
-                                <li key={e2.id} >
-                                    <div className='acaoContainer'>
-                                        <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
-                                        <div className='acaoTipo'><p>{e2.tipo}</p></div>
-                                        <div className='containerButtons'>
-                                            <div className='acaoStatus' />
-                                            <button className='acaoView' type="button" 
-                                                onClick={()=> {
-                                                    history.push('/tarefa/'+ e2.id)
-                                                }}>
-                                                <FaEye size={15}/> 
-                                            </button>
+                                <ul>
+                                    {solicitacao.tarefas && solicitacao.tarefas.map(e2 => (
+                                        <li key={e2.id} >
+                                            <div className='acaoContainer'>
+                                                <div className='acaoDate'><p>{Moment(e2.data).format('DD/MM/YYYY')}</p></div>
+                                                <div className='acaoTipo'><p>{e2.tipo}</p></div>
+                                                <div className='containerButtons'>
+                                                    <div className='acaoStatus' />
+                                                    <button className='acaoView' type="button" 
+                                                        onClick={()=> {
+                                                            history.push('/tarefa/'+ e2.id)
+                                                        }}>
+                                                        <FaEye size={15}/> 
+                                                    </button>
+                                                    
+                                                </div>
+                                            </div>
+                                            {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
+                                            {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
                                             
-                                        </div>
-                                    </div>
-                                    {e2.descricao && <div className='acaoDescricao'>{e2.descricao}</div>} 
-                                    {e2.observacao && <div className='acaoObservacao'>{e2.observacao}</div>}                                                                
-                                    
-                                </li>
-                            ))}  
+                                        </li>
+                                    ))}
+                                </ul>   
                             </div>
                         }
                           
@@ -167,9 +170,9 @@ export default function DetailSolicitacao(){
                             
                             <p className='dataDemanda'>Esta demanda foi cadastrada no dia {Moment(demanda.data).format('DD/MM/YY')}</p>
                             <p>{demanda.descricao}</p>
-                        </div>}
-
-                        {demanda && <ul>                            
+                        </div>
+                        &&
+                        <ul>                            
                             {demanda.tarefas && demanda.tarefas.map(e3 => (
                                 <li key={e3.id} >
                                     <div className='acaoContainer'>
