@@ -37,14 +37,15 @@ export default function DetailSolicitacao(){
 
     }, [ history, params ])
 
-    function getMunicipe(id){
+    async function getMunicipe(id){
         let token = 'JWT ' + localStorage.getItem('token');
 
-        api.get('gestao/municipe/'+id, {
+        await api.get('gestao/municipe/'+id, {
             headers: {
                 Authorization: token,
             }
         }).then(response => {
+            console.log(response.data);
             return response.data;
         }, error => {
             if (error.response.status === 401){
