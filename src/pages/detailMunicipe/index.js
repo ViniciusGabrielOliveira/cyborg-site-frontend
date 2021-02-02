@@ -21,6 +21,7 @@ export default function DetailMunicipe(){
     const [getClassificacoes, setGetClassificacoes] = useState([]);
     const [classificacao, setClassificacao] = useState('');
     const [classificacoes, setClassificacoes] = useState([]);
+    const [addClassificacao, setAddClassificacao] = useState(false);
 
 
     
@@ -74,6 +75,24 @@ export default function DetailMunicipe(){
             
         }, error => {
 
+        })
+    }
+
+    async function PostClass(e){
+               
+
+        await api.post("gestao/classificacao/", {
+            "nome": e
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'JWT ' + localStorage.getItem('token'),
+            }
+        }).then(error => {    
+            if (error.response.status === 401){
+                history.push('/logon');
+            }
+            alert(error.response.data);
         })
     }
 
@@ -148,21 +167,43 @@ export default function DetailMunicipe(){
                     </div>
                     
                     <div className= 'class-add'>
-                        <select 
-                            onChange={e=> setClassificacao(e.target.value)} 
-                        >
-                            <option value={''}>
-                                Adicionar Classificação
-                            </option>
-                            {getClassificacoes.map(option => (
-                                <option key={option.id} value={option.id}>
-                                    {option.nome}
-                                </option>
-                            ))}
-                        </select>
-                        <button type="button" className="mais" onClick={handleAddClassificacao}>
-                            <FaPlusCircle className='class-add-icon'/> 
-                        </button>
+                        
+
+                        {addClassificacao ? 
+                            <>
+                                <button type="button" className="mais" onClick={setAddClassificacao(false)}>
+                                    <p>voltar</p>
+                                </button>
+                                <input 
+                                    placeholder="Digite uma nova Classificação"
+                                    value={classificacao}
+                                    onChange={e=> setClassificacao(e.target.value)} 
+                                />
+                                <button type="button" className="mais" onClick={PostClass(classificacao)}>
+                                    <FaPlusCircle className='class-add-icon'/>
+                                </button>
+                            </>
+                        :   <>
+                                <button type="button" className="mais" onClick={setAddClassificacao(true)}>
+                                    <p>adicionar classificação nova</p>
+                                </button>
+                                <select 
+                                    onChange={e=> setClassificacao(e.target.value)} 
+                                >
+                                    <option value={''}>
+                                        Adicionar Classificação
+                                    </option>
+                                    {getClassificacoes.map(option => (
+                                        <option key={option.id} value={option.id}>
+                                            {option.nome}
+                                        </option>
+                                    ))}
+                                </select>
+                                <button type="button" className="mais" onClick={handleAddClassificacao}>
+                                    <FaPlusCircle className='class-add-icon'/>
+                                </button>
+                            </>
+                        }
                     </div>
                     <div className="container-classificacoes">
                         <ul>
