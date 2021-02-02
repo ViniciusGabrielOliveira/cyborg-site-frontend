@@ -37,6 +37,22 @@ export default function DetailSolicitacao(){
 
     }, [ history, params ])
 
+    function getMunicipe(id){
+        let token = 'JWT ' + localStorage.getItem('token');
+
+        api.get('gestao/municipe/'+id, {
+            headers: {
+                Authorization: token,
+            }
+        }).then(response => {
+            return response.data;
+        }, error => {
+            if (error.response.status === 401){
+                history.push('/logon');
+            }
+        })
+    }
+
      
 
     
@@ -134,7 +150,7 @@ export default function DetailSolicitacao(){
                             <li key={e4.id} >
                                 <div className='acaoContainer'>
                                     <div className='acaoDate'><p>{Moment(e4.data).format('DD/MM/YYYY')}</p></div>
-                                    <div className='acaoTipo'><p>{e4.municipe}</p></div>
+                                    <div className='acaoTipo'><p>{getMunicipe(e4.municipe).nome}</p></div>
                                     <div className='containerButtons'>
                                         <div className='acaoStatus' />
                                         <button className='acaoView' type="button" 
