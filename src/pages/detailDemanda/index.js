@@ -139,7 +139,7 @@ export default function DetailSolicitacao(){
                                         <div className='acaoStatus' />
                                         <button className='acaoView' type="button" 
                                             onClick={()=> {
-                                                history.push('/tarefa/'+ e4.id)
+                                                history.push('/solicitacao/'+ e4.id)
                                             }}>
                                             <FaEye size={15}/> 
                                         </button>
