@@ -170,19 +170,19 @@ export default function DetailMunicipe(){
                         
 
                         {addClassificacao ? 
-                            <>
-                                <button type="button" className="mais" onClick={setAddClassificacao(false)}>
-                                    <p>voltar</p>
-                                </button>
-                                <input 
-                                    placeholder="Digite uma nova Classificação"
-                                    value={classificacao}
-                                    onChange={e=> setClassificacao(e.target.value)} 
-                                />
-                                <button type="button" className="mais" onClick={PostClass(classificacao)}>
-                                    <FaPlusCircle className='class-add-icon'/>
-                                </button>
-                            </>
+                            // <>
+                            //     <button type="button" className="mais" onClick={setAddClassificacao(false)}>
+                            //         <p>voltar</p>
+                            //     </button>
+                            //     <input 
+                            //         placeholder="Digite uma nova Classificação"
+                            //         value={classificacao}
+                            //         onChange={e=> setClassificacao(e.target.value)} 
+                            //     />
+                            //     <button type="button" className="mais" onClick={PostClass(classificacao)}>
+                            //         <FaPlusCircle className='class-add-icon'/>
+                            //     </button>
+                            // </>
                         :   <>
                                 <button type="button" className="mais" onClick={setAddClassificacao(true)}>
                                     <p>adicionar classificação nova</p>
