@@ -151,7 +151,7 @@ export default function DetailSolicitacao(){
                             <li key={e4.id} >
                                 <div className='acaoContainer'>
                                     <div className='acaoDate'><p>{Moment(e4.data).format('DD/MM/YYYY')}</p></div>
-                                    <div className='acaoTipo'><p>{getMunicipe(e4.municipe).nome && getMunicipe(e4.municipe).nome}</p></div>
+                                    <div className='acaoTipo'><p>{getMunicipe(e4.municipe).nome}</p></div>
                                     <div className='containerButtons'>
                                         <div className='acaoStatus' />
                                         <button className='acaoView' type="button" 
