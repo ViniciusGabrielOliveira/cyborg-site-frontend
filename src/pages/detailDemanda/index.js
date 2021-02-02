@@ -46,7 +46,7 @@ export default function DetailSolicitacao(){
             }
         }).then(response => {
             console.log(response.data);
-            return response.data;
+            return <p>{response.data.nome}</p>
         }, error => {
             if (error.response.status === 401){
                 history.push('/logon');
@@ -151,7 +151,7 @@ export default function DetailSolicitacao(){
                             <li key={e4.id} >
                                 <div className='acaoContainer'>
                                     <div className='acaoDate'><p>{Moment(e4.data).format('DD/MM/YYYY')}</p></div>
-                                    <div className='acaoTipo'><p>{() => getMunicipe(e4.municipe).nome}</p></div>
+                                    <div className='acaoTipo'>{() => getMunicipe(e4.municipe)}</div>
                                     <div className='containerButtons'>
                                         <div className='acaoStatus' />
                                         <button className='acaoView' type="button" 
