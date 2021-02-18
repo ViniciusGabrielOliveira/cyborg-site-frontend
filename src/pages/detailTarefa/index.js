@@ -64,8 +64,8 @@ export default function DetailTarefa(){
                     <p><strong>Status: </strong>{tarefa.status}</p>
                     <p><strong>Prioridade: </strong>{tarefa.prioridade}</p>
                     <p><strong>Responsável: </strong>{tarefa.usuario}</p>
-                    <p><strong>Solicitação: </strong>{tarefa.solicitacao}</p>
-                    <p><strong>Demanda: </strong>{tarefa.demanda}</p>
+                    {tarefa.solicitacao && <div><p><strong>Solicitação: </strong></p><FaArrowLeft size={20} color="#fff" opacity="0.5" onClick={()=>  history.push('solicitacao/' + tarefa.solicitacao)} /></div>}
+                    {tarefa.demanda && <div><p><strong>Demanda: </strong></p><FaArrowLeft size={20} color="#fff" opacity="0.5" onClick={()=>  history.push('demanda/' + tarefa.demanda)} /></div>}
 
                 </div>                                                                                                    
             </div>           
