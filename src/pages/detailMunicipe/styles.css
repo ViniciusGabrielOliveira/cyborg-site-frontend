@@ -330,3 +330,8 @@
     margin-top: 1px;
 
 }
+
+.descricao_campo{
+    display: flex;
+    justify-content: space-between;
+}
