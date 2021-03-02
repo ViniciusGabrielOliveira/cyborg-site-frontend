@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { FaPlusSquare, FaMinusSquare, FaSearch } from 'react-icons/fa';
+import { FaPlusSquare, FaMinusSquare, FaSearch, FaCogs } from 'react-icons/fa';
 import api from '../../services/api';
 import apiCep from '../../services/apiCep';
 
@@ -30,7 +30,11 @@ export default function NewMunicipe(){
     const [classificacoes, setClassificacoes] = useState([]);
     const [getClassificacoes, setGetClassificacoes] = useState([]);
     const [avatar_url, setAvatar_url] = useState('');
-    const [sexo, setSexo] = useState('')
+    const [sexo, setSexo] = useState('')    
+    const [facebookUrl, setFacebookUrl] = useState('')
+    const [instagramUrl, setInstagramUrl] = useState('')
+    const [linkedinUrl, setLinkedinUrl] = useState('')
+    const [cra, setCra] = useState('')
 
 
     const history = useHistory();
@@ -201,12 +205,14 @@ export default function NewMunicipe(){
                 <form onSubmit={handleNewMunicipe}
                 >
                     
+                    <p>Nome</p>                    
                     <input 
                         placeholder="Nome Completo"
                         value={nome}
                         onChange={e=> setNome(e.target.value)} 
                     />
-                    
+                    <hr/>                    
+                    <p>Sexo</p>
                         
                     <select onChange={e=> setSexo(e.target.value)}>
                         <option value={''}>
@@ -220,14 +226,17 @@ export default function NewMunicipe(){
                         </option>
                     </select>
                         
-                    
+                    <hr/>                    
+                    <p>CEP</p>
                     <input 
                         placeholder="CEP"
                         maxLength='10'
                         value={cep}
-                        onChange={e=> setCep(cepMask(e.target.value))} 
+                        onChange={e=> setCep(e.target.value)} 
                     />
                     
+                    <hr/>                    
+                    <p>Rua</p>
                     <div className= 'fone'>
                         <input 
                             placeholder="Procurar Rua"
@@ -241,45 +250,64 @@ export default function NewMunicipe(){
                     {searchCep && 
                         <div>
                             {searchRuas.map((rua, index) => (
-                                <Link className= 'fones' key={index}  onClick={() => {setCep(cepMask(rua.cep)); setSearchCep(!searchCep)}} mou>
-                                    <div>{rua.logradouro}</div>
+                                <Link className= 'fones' key={index}  
+                                    onClick={() => {
+                                        setCep(rua.cep); 
+                                        setSearchCep(!searchCep);
+                                        setBairro(rua.bairro);
+                                        setCidade(rua.cidade)
+                                        setLogradouro(rua.logradouro)}}>
+                                    <div>{rua.logradouro} - </div>
                                     <div>{rua.bairro}</div>
                                 </Link>
                             ))}             
                         </div>
                     }
+                    <hr/>                    
+                    <p>Número</p>
                     <input 
                         placeholder="Número"
                         value={numero}
                         onChange={e=> setNumero(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Complemento</p>
                     <input 
                         placeholder="Complemento"
                         value={complemento}
                         onChange={e=> setComplemento(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Bairro</p>
                     <input 
                         placeholder="Bairro"
                         value={bairro}
                         onChange={e=> setBairro(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Cidade</p>
                     <input 
                         placeholder="Cidade"
                         value={cidade}
                         onChange={e=> setCidade(e.target.value)} 
                     />
+                    <hr/>                    
+                    <p>Estado</p>
                     <input 
                         placeholder="Estado"
                         value={estado}
                         onChange={e=> setEstado(e.target.value)} 
                     />
-                    
+                    <hr/>
+                    <p>Nascimento</p>
                     <input 
                         placeholder="Nascimento"
                         type="date"
                         value={nascimento}
-                        onChange={e=> setNascimento(e.target.value)} 
+                        onChange={e=> setNascimento(e.target.value)}
                     />
+                    <hr/>
+                    <p>Fones</p>
                     <div className= 'fone'>
                         <input 
                             placeholder="Fone"
@@ -304,6 +332,8 @@ export default function NewMunicipe(){
                             </div>
                         ))}
                     </ul>
+                    <hr/>
+                    <p>Emails</p>
                     <div className= 'fone'>
                         <input 
                             placeholder="Email"
@@ -328,6 +358,11 @@ export default function NewMunicipe(){
                             </div>
                         ))}
                     </ul>
+                    <hr/>
+                    <div className= 'descricao_campo'>
+                        <p>Classificação</p>
+                        <FaCogs  size={20} color="#a9a9a9" onClick={()=> history.push('/classificacoes')}/>
+                    </div>
                     <div className= 'fone'>
                         
                         <select 
@@ -362,15 +397,52 @@ export default function NewMunicipe(){
                             </div>
                         ))}
                     </ul>
+                    <hr/>
+                    <p>Obs</p>
                     <textarea
                         placeholder="Observação"
                         value={obs}
                         onChange={e=> setObs(e.target.value)}
                     />
+                    <hr/>
+                    <p>Avatar</p>
                     <input 
                         placeholder="Avatar-URL"
                         value={avatar_url}
                         onChange={e=> setAvatar_url(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>Facebook - URL</p>
+                    <input 
+                        placeholder="Facebook-URL"
+                        value={facebookUrl}
+                        onChange={e=> setFacebookUrl(e.target.value)} 
+                    />
+
+                    
+                    <hr/>
+                    <p>Instagram - URL</p>
+                    <input 
+                        placeholder="Instagram-URL"
+                        value={instagramUrl}
+                        onChange={e=> setInstagramUrl(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>LinkedIn - URL</p>
+                    <input 
+                        placeholder="LinkedIn-URL"
+                        value={linkedinUrl}
+                        onChange={e=> setLinkedinUrl(e.target.value)} 
+                    />
+
+                    <hr/>
+                    <p>CRA</p>
+                    <input 
+                        placeholder="CRA"
+                        value={cra}
+                        onChange={e=> setCra(e.target.value)} 
                     />
                     
 

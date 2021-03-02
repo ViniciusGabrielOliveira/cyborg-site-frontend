@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { FaPlusSquare, FaMinusSquare, FaSearch, FaPhoneSquare, FaEnvelopeSquare } from 'react-icons/fa';
+import { FaPlusSquare, FaMinusSquare, FaSearch, FaPhoneSquare, FaEnvelopeSquare, FaCogs } from 'react-icons/fa';
 import api from '../../services/api';
 import apiCep from '../../services/apiCep';
 
@@ -448,7 +448,10 @@ export default function EditMunicipe(){
                         ))}
                     </ul>
                     <hr/>
-                    <p>Classificação</p>
+                    <div className= 'descricao_campo'>
+                        <p>Classificação</p>
+                        <FaCogs  size={20} color="#a9a9a9" onClick={()=> history.push('/classificacoes')}/>
+                    </div>
                     <div className= 'fone'>
                         
                         <select 
