@@ -21,6 +21,7 @@ export default function DetailMunicipe(){
     const [getClassificacoes, setGetClassificacoes] = useState([]);
     const [classificacao, setClassificacao] = useState('');
     const [classificacoes, setClassificacoes] = useState([]);
+    const [addClassificacao, setAddClassificacao] = useState(false);
 
 
     
@@ -55,6 +56,29 @@ export default function DetailMunicipe(){
         })
 
     }, [classificacoes, history, params.id])
+
+    function handleAddClassificacao(e){
+        e.preventDefault();
+
+        const url = 'gestao/municipe/' + params.id + '/';
+
+        setClassificacoes([...municipe.classificacoes, parseInt(classificacao)])
+        const dict = {'classificacoes': [...municipe.classificacoes, parseInt(classificacao)]}
+
+
+        api.patch(url, dict, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            }
+        }).then(response => {
+            
+        }, error => {
+
+        })
+    }
+
+    
 
     
     return(
@@ -147,8 +171,8 @@ export default function DetailMunicipe(){
                             ))}
                         </select>
                         <button type="button" className="mais" 
-                            onClick={() => {
-                                setClassificacoes([...classificacoes, classificacao])
+                            onClick={e => {
+                                handleAddClassificacao(e)
                                 setClassificacao('')
                             }}>
                             <FaPlusSquare  size={20} color="#a9a9a9" /> 
@@ -156,11 +180,8 @@ export default function DetailMunicipe(){
                     </div>
                     
                     <ul className="fones-container">
-                        {classificacoes && classificacoes.map((classific, index) => (
-                            <div className= 'fones' key={index} >
-                                {classific && <button type="button" className="mais" onClick={() => (setClassificacoes([...classificacoes.slice(0,-1)]))}>
-                                    <FaMinusSquare  size={15} color="#a9a9a9" /> 
-                                </button>}
+                        {municipe.classificacoes && municipe.classificacoes.map((classific, index) => (
+                            <div className= 'fones' key={index} >                                
                                 {getClassificacoes.map(option => (
                                     parseInt(classific) === option.id ? <div key={option.id}>{option.nome}</div> : null
                                 ))}

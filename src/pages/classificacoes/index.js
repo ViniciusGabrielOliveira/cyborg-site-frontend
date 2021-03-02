@@ -93,7 +93,8 @@ export default function Classificacoes(){
                 <input 
                     placeholder="Nova Classificação"
                     value={searchValue}
-                    onChange={e=> setSearchValue(e.target.value)} 
+                    onChange={e=> setSearchValue(e.target.value)}
+                    onKeyDown={(e)=>{if(e.key === 'Enter') addClassificacao(searchValue)}} 
                 />
                 <button type="button" className="mais" 
                     onClick={()=>(addClassificacao(searchValue))}>
