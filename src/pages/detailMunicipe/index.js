@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { FaPlusCircle, FaEnvelopeSquare, FaPhoneSquare, FaBirthdayCake, FaArrowLeft, FaPrint, FaFilePdf, FaUserGraduate, FaEye, FaEdit } from 'react-icons/fa';
+import { FaPlusCircle, FaEnvelopeSquare, FaPhoneSquare, FaBirthdayCake, FaArrowLeft, FaPrint, FaFilePdf, FaUserGraduate, FaEye, FaEdit, FaPlusSquare, FaMinusSquare, FaCogs } from 'react-icons/fa';
 import AvatarAlt from '../../assets/avatar.jpg';
 
 import api from '../../services/api';
@@ -21,7 +21,6 @@ export default function DetailMunicipe(){
     const [getClassificacoes, setGetClassificacoes] = useState([]);
     const [classificacao, setClassificacao] = useState('');
     const [classificacoes, setClassificacoes] = useState([]);
-    const [addClassificacao, setAddClassificacao] = useState(false);
 
 
     
@@ -56,45 +55,6 @@ export default function DetailMunicipe(){
         })
 
     }, [classificacoes, history, params.id])
-
-    function handleAddClassificacao(e){
-        e.preventDefault();
-
-        const url = 'gestao/municipe/' + params.id + '/';
-
-        setClassificacoes([...municipe.classificacoes, parseInt(classificacao)])
-        const dict = {'classificacoes': [...municipe.classificacoes, parseInt(classificacao)]}
-
-
-        api.patch(url, dict, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem('token')}`
-            }
-        }).then(response => {
-            
-        }, error => {
-
-        })
-    }
-
-    async function PostClass(e){
-               
-
-        await api.post("gestao/classificacao/", {
-            "nome": e
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'JWT ' + localStorage.getItem('token'),
-            }
-        }).then(error => {    
-            if (error.response.status === 401){
-                history.push('/logon');
-            }
-            alert(error.response.data);
-        })
-    }
 
     
     return(
@@ -166,58 +126,47 @@ export default function DetailMunicipe(){
                         </ul>
                     </div>
                     
-                    <div className= 'class-add'>
+                    <hr/>
+                    <div className= 'descricao_campo'>
+                        <p>Classificação</p>
+                        <FaCogs  size={20} color="#a9a9a9" onClick={()=> history.push('/classificacoes')}/>
+                    </div>
+                    
+                    <div className= 'fone'>
                         
-
-                        {addClassificacao ? null
-                            // <>
-                            //     <button type="button" className="mais" onClick={setAddClassificacao(false)}>
-                            //         <p>voltar</p>
-                            //     </button>
-                            //     <input 
-                            //         placeholder="Digite uma nova Classificação"
-                            //         value={classificacao}
-                            //         onChange={e=> setClassificacao(e.target.value)} 
-                            //     />
-                            //     <button type="button" className="mais" onClick={PostClass(classificacao)}>
-                            //         <FaPlusCircle className='class-add-icon'/>
-                            //     </button>
-                            // </>
-                        :   <>
-                                <button type="button" className="mais" onClick={setAddClassificacao(true)}>
-                                    <p>adicionar classificação nova</p>
-                                </button>
-                                <select 
-                                    onChange={e=> setClassificacao(e.target.value)} 
-                                >
-                                    <option value={''}>
-                                        Adicionar Classificação
-                                    </option>
-                                    {getClassificacoes.map(option => (
-                                        <option key={option.id} value={option.id}>
-                                            {option.nome}
-                                        </option>
-                                    ))}
-                                </select>
-                                <button type="button" className="mais" onClick={handleAddClassificacao}>
-                                    <FaPlusCircle className='class-add-icon'/>
-                                </button>
-                            </>
-                        }
+                        <select 
+                            onChange={e=> setClassificacao(e.target.value)} 
+                        >
+                            <option value={''}>
+                                Classificação
+                            </option>
+                            {getClassificacoes.map(option => (
+                                <option key={option.id} value={option.id}>
+                                    {option.nome}
+                                </option>
+                            ))}
+                        </select>
+                        <button type="button" className="mais" 
+                            onClick={() => {
+                                setClassificacoes([...classificacoes, classificacao])
+                                setClassificacao('')
+                            }}>
+                            <FaPlusSquare  size={20} color="#a9a9a9" /> 
+                        </button>
                     </div>
-                    <div className="container-classificacoes">
-                        <ul>
-                            {municipe.classificacoes && municipe.classificacoes.map(e => 
-                                getClassificacoes.map(option => (
-                                    parseInt(e) === option.id ?
-                                        <li key={option.id} className='class-li'>
-                                            {option.nome}
-                                        </li>
-                                    : null                                
-                                ))
-                            )}
-                        </ul>
-                    </div>
+                    
+                    <ul className="fones-container">
+                        {classificacoes && classificacoes.map((classific, index) => (
+                            <div className= 'fones' key={index} >
+                                {classific && <button type="button" className="mais" onClick={() => (setClassificacoes([...classificacoes.slice(0,-1)]))}>
+                                    <FaMinusSquare  size={15} color="#a9a9a9" /> 
+                                </button>}
+                                {getClassificacoes.map(option => (
+                                    parseInt(classific) === option.id ? <div key={option.id}>{option.nome}</div> : null
+                                ))}
+                            </div>
+                        ))}
+                    </ul>
                                         
                     <div className='solicitacoesContainer'>
                         <div className='solicitHeader'>

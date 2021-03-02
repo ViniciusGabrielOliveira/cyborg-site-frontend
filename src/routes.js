@@ -27,6 +27,7 @@ import EditDemanda from './pages/editDemanda';
 import Tarefas from './pages/tarefas';
 import Demandas from './pages/demandas';
 import CadastroJson from './pages/cadastrarJson';
+import Classificacoes from './pages/classificacoes';
 
 export default function Routes() {
     return(
@@ -54,6 +55,7 @@ export default function Routes() {
                 <Route path="/edittarefa/:id" component={EditTarefa} />
                 <Route path="/tarefas" component={Tarefas} />
                 <Route path="/cadastrarJson" component={CadastroJson} />
+                <Route path="/classificacoes" component={Classificacoes} />
 
 
                 <Route path="/" component={Home} />
