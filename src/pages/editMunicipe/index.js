@@ -79,9 +79,9 @@ export default function EditMunicipe(){
             setSexo(response.data.sexo);
             setAvatar_url(response.data.avatar_url);
             setStatus(response.data.status);
-            setFacebookUrl(response.data.facebookUrl);
-            setInstagramUrl(response.data.instagramUrl);
-            setLinkedinUrl(response.data.linkedinUrl);
+            setFacebookUrl(response.data.facebook_url);
+            setInstagramUrl(response.data.instagram_url);
+            setLinkedinUrl(response.data.linkedin_url);
             setCra(response.data.cra);
 
         }, error => {
@@ -174,6 +174,8 @@ export default function EditMunicipe(){
             return
         }
 
+
+
         if (logradouro) {data['logradouro']=logradouro}
         if (numero) {data['numero']=numero}
         if (complemento) {data['complemento']=complemento}
@@ -185,7 +187,15 @@ export default function EditMunicipe(){
         if (cep) {data['cep']=parseInt(cep)}
         if (classificacoes) {data['classificacoes']=classificacoes}
         if (avatar_url) {data['avatar_url']=avatar_url}
-        
+        if (status) {data['status']=status}
+        if (facebookUrl) {data['facebook_url']=facebookUrl}
+        if (instagramUrl) {data['instagram_url']=instagramUrl}
+        if (linkedinUrl) {data['linkedin_url']=linkedinUrl}
+        if (cra) {data['cra']=cra}
+
+
+
+
         
         api.patch('gestao/municipe/'+params.id+'/', data, {
                     headers: {
@@ -195,10 +205,10 @@ export default function EditMunicipe(){
         }).then(response => {
             if (response.data.id>0) {municipeId = response.data.id}
         }, error => {  
-            console.log(error.response.data)        
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data.nome)        
         }).then(()=>{
             if (fones.length>0){
                 fones.map(fone => (
@@ -216,6 +226,7 @@ export default function EditMunicipe(){
                         if (error.response.status === 401){
                             history.push('/logon');
                         }
+                        alert(error.response.data.nome) 
                     })
                 ))
             }
@@ -236,6 +247,7 @@ export default function EditMunicipe(){
                         if (error.response.status === 401){
                             history.push('/logon');
                         }
+                        alert(error.response.data.nome)
                     })
                 ))
             }            

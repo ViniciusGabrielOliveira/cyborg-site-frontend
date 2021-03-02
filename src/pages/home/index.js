@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {useHistory} from 'react-router-dom';
-import { FaHome, FaUserPlus, FaCheckSquare, FaList, FaSearch, FaFilter, FaPrint, FaFilePdf, FaTag, FaListAlt, FaPowerOff, FaArrowLeft } from 'react-icons/fa';
+import { FaHome, FaUserPlus, FaCheckSquare, FaList, FaSearch, FaFilter, FaPrint, FaFilePdf, FaTag, FaListAlt, FaPowerOff, FaArrowLeft, FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 
 import api from '../../services/api';
@@ -342,23 +342,49 @@ export default function HomeSite(){
                     {municipes.map(municipe => (
                         
                         <li key={municipe.id}>
-                            <div className='card' onClick={()=> history.push(`/municipe/${municipe.id}`)}>
+                            <div className='card'>
                                 <div className='nome-checkBox-container'>
-                                    <h1>{municipe.nome}</h1>
+                                    <h1 onClick={()=> history.push(`/municipe/${municipe.id}`)}>{municipe.nome}</h1>
                                     <div>
-                                        {/* <input className='checkBox' type='checkbox' /> */}
+                                        {municipe.facebook_url && 
+                                            <a href={municipe.facebook_url} target="_blank" rel="noopener noreferrer">
+                                                <FaFacebook size={18} color={"#425070"} />
+                                            </a> 
+                                        }
+                                        {municipe.instagram_url && 
+                                            <a href={municipe.instagram_url} target="_blank" rel="noopener noreferrer">
+                                                <FaInstagram size={18} color={"#425070"} />
+                                            </a>
+                                        }                                        
+                                        {municipe.linkedin_url &&
+                                            <a href={municipe.linkedin_url} target="_blank" rel="noopener noreferrer">
+                                                <FaLinkedin size={18} color={"#425070"} />
+                                            </a>
+                                        }
                                     </div>
                                 </div>
-                                <div className='avatar-bairro-container'>
-                                    <div className='avatar-container'>
+                                <div className='avatar-bairro-container' >
+                                    <div className='avatar-container' onClick={()=> history.push(`/municipe/${municipe.id}`)} >
                                         {municipe.avatar_url.length > 5 ? <img className='img-avatar' src={municipe.avatar_url} alt="...carregando imagem..." /> : <img className='img-avatar' src={AvatarAlt} alt="...carregando imagem..." />}                                 
                                     </div>  
                                     <div>                                
-                                        <p>Bairro: {municipe.bairro}</p>
+                                        <p onClick={()=> history.push(`/municipe/${municipe.id}`)} >Bairro: {municipe.bairro}</p>
+                                        <div className='home-fones-container'>
+                                            <div>
+                                                {municipe.fones.map(e => (
+                                                    <a 
+                                                        href={"https://api.whatsapp.com/send?phone=phone=+55"+ e.numero+"&text=Olá%20"+ municipe.nome} 
+                                                        key={e.id}
+                                                        target="_blank" rel="noopener noreferrer"
+                                                    >
+                                                        {e.numero}
+                                                        <FaWhatsapp size={18} color={"#425070"} />
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
                                         
-                                        <p>Fones: {municipe.fones.map(e => e.numero).join('; ')}</p>
-                                        
-                                        <p>Obs: {municipe.obs}</p>                            
+                                        <p onClick={()=> history.push(`/municipe/${municipe.id}`)} >Obs: {municipe.obs}</p>                            
                                     </div>
                                 </div>                                                    
                             </div>                        

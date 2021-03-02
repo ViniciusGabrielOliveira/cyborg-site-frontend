@@ -80,6 +80,12 @@
     margin-bottom: 10px;
 }
 
+.nome-checkBox-container div {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .checkBox {
     margin: 10px;
     align-self: center;
@@ -105,6 +111,23 @@
     flex: 0 0 60px;
     height: 60px;
     margin-right: 5px;
+}
+
+.home-fones-container{
+    display: flex;
+}
+
+.home-fones-container div {
+    margin-left: 5px;
+}
+
+.home-fones-container a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-fones-container a a{
+    margin-left: 5px;
 }
 
 .img-avatar {

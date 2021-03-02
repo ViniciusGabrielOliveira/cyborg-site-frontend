@@ -50,7 +50,8 @@ export default function DetailMunicipe(){
             setMunicipe(response.data);
 
         }, error => {
-            if (error.response.status === 401){
+            if(error.response.status){
+            }else if (error.response.status === 401){
                 history.push('/logon');
             }
         })
