@@ -1,7 +1,9 @@
 {
   "name": "frontend",
-  "version": "0.1.0","engines": {
-    "node": "12.x"
+  "version": "0.1.0",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
   },
   "private": true,
   "deploy": "pm2 start ./server.sh --name cyborg",
@@ -17,7 +19,7 @@
     "map": "^1.0.1",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
-    "pm2": "^4.4.0",
+    "pm2": "^4.5.5",
     "prop-types": "^15.7.2",
     "qs": "^6.9.4",
     "query-string": "^6.12.1",
