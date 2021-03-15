@@ -156,7 +156,9 @@ export default function EditMunicipe(){
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }
-        }).then(response =>{null}, error => {
+        }).then(response =>{
+            console.log("munícipe deletado")
+        }, error => {
             
         })
     }
