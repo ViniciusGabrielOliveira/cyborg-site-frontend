@@ -88,6 +88,7 @@ export default function EditMunicipe(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })
 
     }, [history, params.id, loadFones])
@@ -108,6 +109,7 @@ export default function EditMunicipe(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })
         
         if (url.length>1) {
@@ -125,6 +127,7 @@ export default function EditMunicipe(){
                 if (error.response === 400){
                     alert('cep invalido')
                 }
+                alert(error.response.data);
             })
         }
 
@@ -140,6 +143,7 @@ export default function EditMunicipe(){
                 if (error.response === 400){
                     alert('cep invalido')
                 }
+                alert(error.response.data);
             })
         }
 
@@ -152,6 +156,8 @@ export default function EditMunicipe(){
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${localStorage.getItem('token')}`
             }
+        }).then(response =>{null}, error => {
+            
         })
     }
 

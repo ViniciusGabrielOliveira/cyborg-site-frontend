@@ -118,7 +118,7 @@ export default function DetailTarefa(){
                 municipeId = response.data.id
             }
         }, error => {
-            console.log(error.response.data)
+            alert(error.response.data)
         }).then(async()=>{
             if (municipeId === 0){
                 await api.get('gestao/municipes/?nome1='+municipedados.nome, {
@@ -145,6 +145,7 @@ export default function DetailTarefa(){
                         }
                     }).then(response => {
                     }, error => {
+                        alert(error.response.data);
                         console.log(error.response.data)
                     })
                 ))

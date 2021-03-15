@@ -1,6 +1,8 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
+  "version": "0.1.0","engines": {
+    "node": "12.x"
+  },
   "private": true,
   "deploy": "pm2 start ./server.sh --name cyborg",
   "dependencies": {

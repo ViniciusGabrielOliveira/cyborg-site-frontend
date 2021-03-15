@@ -40,6 +40,7 @@ export default function DetailMunicipe(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })
 
         api.get(url, {
@@ -54,6 +55,7 @@ export default function DetailMunicipe(){
             }else if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })
 
     }, [classificacoes, history, params.id])

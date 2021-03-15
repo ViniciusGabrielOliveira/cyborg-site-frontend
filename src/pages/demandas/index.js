@@ -35,7 +35,9 @@ export default function Demandas(){
         }, error => {
             if (error.response.status === 401){
                 history.push('/logon');
-            }
+            };
+            alert(error.response.data);
+
         })
 
         

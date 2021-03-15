@@ -61,6 +61,7 @@ export default function EditDemanda(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })   
         
         
@@ -84,6 +85,7 @@ export default function EditDemanda(){
                 if (error.response === 400){
                     alert('rua não encontrada')
                 }
+                alert(error.response.data);
             })
         }
 

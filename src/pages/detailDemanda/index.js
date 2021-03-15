@@ -33,6 +33,7 @@ export default function DetailSolicitacao(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
         })        
 
     }, [ history, params ])
@@ -51,6 +52,8 @@ export default function DetailSolicitacao(){
             if (error.response.status === 401){
                 history.push('/logon');
             }
+            alert(error.response.data);
+
         })
     }
 
